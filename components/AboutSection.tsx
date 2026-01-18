@@ -83,10 +83,10 @@ export default function AboutSection() {
                   viewport={{ once: true }}
                   className="border border-[var(--border-color)] bg-[#0a0a0a] p-6 rounded-lg hover:border-[var(--neon-green)] transition-all duration-300"
                 >
-                  <h4 className="text-lg font-bold font-mono mb-4 text-[var(--neon-green)]">
+                  <h4 className="text-lg font-bold font-mono mb-4 text-[var(--neon-green)] text-center">
                     {category.category}
                   </h4>
-                  <div className="flex flex-wrap gap-3">
+                  <div className="flex flex-wrap gap-3 justify-center">
                     {category.skills.map((skill) => (
                       <span
                         key={skill}
