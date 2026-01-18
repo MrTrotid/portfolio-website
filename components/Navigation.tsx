@@ -10,8 +10,18 @@ interface NavigationProps {
 }
 
 export default function Navigation({ activeSection, onNavigate }: NavigationProps) {
-  const sections = useMemo(() => ['About', 'Project', 'Experience', 'Contact'], []);
+  const sections = useMemo(() => ['About me', 'Project', 'Experience', 'Contact'], []);
   const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
+
+  const getSectionRoute = useCallback((displayName: string) => {
+    const routeMap: Record<string, string> = {
+      'About me': 'about',
+      'Project': 'project',
+      'Experience': 'experience',
+      'Contact': 'contact',
+    };
+    return routeMap[displayName] || displayName.toLowerCase();
+  }, []);
 
   useEffect(() => {
     if (!activeSection) {
@@ -19,7 +29,7 @@ export default function Navigation({ activeSection, onNavigate }: NavigationProp
       return;
     }
 
-    const activeIndex = sections.findIndex(s => s.toLowerCase() === activeSection);
+    const activeIndex = sections.findIndex(s => getSectionRoute(s) === activeSection);
     if (activeIndex !== -1) {
       const button = document.querySelector(`[data-section="${sections[activeIndex]}"]`);
       if (button) {
@@ -34,11 +44,11 @@ export default function Navigation({ activeSection, onNavigate }: NavigationProp
         }
       }
     }
-  }, [activeSection, sections]);
+  }, [activeSection, sections, getSectionRoute]);
 
   const handleNavigate = useCallback((section: string) => {
-    onNavigate(section);
-  }, [onNavigate]);
+    onNavigate(getSectionRoute(section));
+  }, [onNavigate, getSectionRoute]);
 
   return (
     <header className="fixed top-6 left-0 right-0 z-50 flex justify-center">
@@ -65,9 +75,9 @@ export default function Navigation({ activeSection, onNavigate }: NavigationProp
               <div key={section} className="flex items-center gap-4">
                 <button
                   data-section={section}
-                  onClick={() => handleNavigate(section.toLowerCase())}
+                  onClick={() => handleNavigate(section)}
                   className={`px-4 py-1 rounded-full transition-all duration-300 font-mono text-xs tracking-wider relative z-10 ${
-                    activeSection === section.toLowerCase() ? 'text-black font-bold' : 'text-white hover:text-[var(--neon-green)]'
+                    activeSection === getSectionRoute(section) ? 'text-black font-bold' : 'text-white hover:text-[var(--neon-green)]'
                   }`}
                 >
                   {section}
@@ -104,9 +114,9 @@ export default function Navigation({ activeSection, onNavigate }: NavigationProp
                 )}
                 <button
                   data-section={section}
-                  onClick={() => handleNavigate(section.toLowerCase())}
+                  onClick={() => handleNavigate(section)}
                   className={`px-4 py-1 rounded-full transition-all duration-300 font-mono text-xs tracking-wider relative z-10 ${
-                    activeSection === section.toLowerCase() ? 'text-black font-bold' : 'text-white hover:text-[var(--neon-green)]'
+                    activeSection === getSectionRoute(section) ? 'text-black font-bold' : 'text-white hover:text-[var(--neon-green)]'
                   }`}
                 >
                   {section}

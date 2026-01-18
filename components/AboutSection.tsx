@@ -16,7 +16,7 @@ export default function AboutSection() {
           viewport={{ once: true }}
         >
           <h2 className="text-4xl md:text-5xl font-bold font-mono mb-4 text-center">
-            <span className="text-[var(--neon-green)]">#</span>about me
+            <span className="text-[var(--neon-green)]">#</span>about-me
           </h2>
           <p className="text-gray-400 text-center mb-12 font-mono">
             $ whoami
