@@ -1,12 +1,25 @@
 {
   "name": "portfolio-website",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "description": "Personal portfolio website with terminal/hacker aesthetic built with Next.js, TypeScript, and Tailwind CSS",
+  "author": "Baman Prasad Guragain <contact@bamanguragain.com.np>",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "next lint"
   },
+  "keywords": [
+    "portfolio",
+    "nextjs",
+    "typescript",
+    "tailwindcss",
+    "framer-motion",
+    "terminal-aesthetic",
+    "cybersecurity"
+  ],
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.4",
     "class-variance-authority": "^0.7.1",

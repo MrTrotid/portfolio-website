@@ -1,66 +1,227 @@
-# Personal Portfolio Website - Cyber Security Theme
+# Personal Portfolio Website - Terminal/Hacker Aesthetic
 
-A modern, dark-themed portfolio website built with Next.js, Tailwind CSS, shadcn/ui, and Framer Motion.
+A modern, terminal-themed portfolio website with CRT screen effects, scanlines, and cybersecurity aesthetics built with Next.js, Tailwind CSS, shadcn/ui, and Framer Motion.
 
-## Features
+## ✨ Features
 
-- 🎨 Dark cyber-security aesthetic with neon green accents
-- 🚀 Built with Next.js 15 and React
-- 💅 Styled with Tailwind CSS
-- 🎭 Smooth animations with Framer Motion
-- 📱 Responsive design
-- 🎯 Single-page application with smooth scrolling
-- 📄 PDF resume viewer with download functionality
+- 🖥️ **Terminal/Hacker Aesthetic** - CRT screen effects, scanlines, grid patterns, and vignette overlays
+- 🎯 **Interactive Elements** - Name hover transformation (Baman → Batman with glitch effect)
+- 🚀 **Built with Next.js 16** and React 19
+- 💅 **Styled with Tailwind CSS v4** - Custom terminal-themed animations
+- 🎭 **Smooth animations** with Framer Motion - Page transitions, carousels, and scroll effects
+- 📱 **Fully Responsive** - Optimized for mobile, tablet, and desktop
+- 🎯 **Single-page application** with smooth scrolling and active section tracking
+- 📄 **Resume Integration** - View and download PDF resume functionality
+- 🎨 **Monospace Typography** - UI-monospace font stack for authentic terminal feel
+- ⚡ **Loading Animations** - Terminal-styled loader with typing effects
 
-## Sections
+## 📑 Sections
 
-1. **Hero Section** - Introduction and call-to-action
-2. **Skills Section** - Technical skills organized by category
-3. **Projects Section** - Showcase of projects with carousel navigation
-4. **Resume Section** - Embedded PDF viewer with download option
-5. **Contact Section** - Contact information and social links
+1. **Hero Section** - Introduction with Batman name transformation effect and CTA button
+2. **Marquee** - Scrolling text banner with terminal aesthetic
+3. **About Me** - Personal introduction with "Who I am", "What I do", and integrated Skills subsection
+4. **Projects** - Interactive carousel with 3 projects, detailed modals, and GitHub links
+5. **Experience** - Dual-journey toggle (Professional vs Organisation/Club) with timeline entries
+6. **Contact** - Terminal window interface with social media links and icons
 
-## Getting Started
+## 🚀 Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+ installed
+- npm or yarn package manager
+
+### Installation
 
 ```bash
+# Clone the repository
+git clone <your-repo-url>
+
+# Navigate to project directory
+cd portfolio-website
+
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Customization
+### Build for Production
 
-### Replace Placeholder Assets
+```bash
+npm run build
+npm start
+```
 
-- `/public/logo.svg` - Your logo (40x40px recommended)
+## 🎨 Customization
+
+### Update Assets
+
+Replace these files in the `/public` directory:
+
+- `/public/logo.svg` - Your logo (displayed in navigation)
 - `/public/hero.svg` - Hero section image (500x500px recommended)
 - `/public/resume.pdf` - Your actual resume PDF
+- `/public/projects/` - Add project images:
+  - `aqsentinel.png` - AQ Sentinel project image
+  - `sherlock.png` - Sherlock Scramble project image
+  - `portfolio.png` - Portfolio website preview
 
 ### Update Content
 
-1. Edit `components/HeroSection.tsx` - Name and tagline
-2. Edit `components/ContactSection.tsx` - Email and social links
-3. Edit `components/SkillsSection.tsx` - Update skills
-4. Edit `components/ProjectsSection.tsx` - Update projects
+#### Hero Section (`components/HeroSection.tsx`)
+- Update your name and tagline
+- Customize the Batman hover effect text if desired
+- Modify the CTA button text
 
-## Tech Stack
+#### About Section (`components/AboutSection.tsx`)
+- Edit "Who I am" personal introduction
+- Update "What I do" bullet points
+- Modify skills in Frontend, Security, and Tools categories
 
-- Next.js 15 (App Router)
-- TypeScript
-- Tailwind CSS
-- shadcn/ui
-- Framer Motion
+#### Projects Section (`components/ProjectsSection.tsx`)
+- Update the `projects` array with your actual projects:
+  ```typescript
+  {
+    title: 'Your Project',
+    subtitle: 'Project Type',
+    description: 'Short description',
+    fullDescription: 'Detailed description',
+    techStack: ['Tech1', 'Tech2'],
+    image: '/projects/your-image.png',
+    images: ['/projects/img1.png', '/projects/img2.png'],
+    isGroupProject: false,
+    githubUrl: 'https://github.com/yourusername/repo'
+  }
+  ```
 
-## Color Scheme
+#### Experience Section (`components/ExperienceSection.tsx`)
+- Update `professionalExperiences` array with your work history
+- Update `organizationExperiences` array with your club/organization roles
+- Both sections include: role, company, period, description, and achievements
 
-- Background: `#0a0a0a`
-- Accent (Neon Green): `#39ff14`
-- Card Background: `#1a1a1a`
+#### Contact Section (`components/ContactSection.tsx`)
+- Update email address
+- Update social media links (GitHub, LinkedIn, YouTube, Instagram)
+- Add or remove contact methods as needed
 
-## Deploy on Vercel
+## 🎨 Terminal Effects & Styling
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Color Scheme
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```css
+--background: #0a0a0a (darkest background)
+--card-bg: #1a1a1a (card backgrounds)
+--base-bg: #323232 (base elements)
+--neon-green: #39ff14 (primary accent)
+--border-color: #2a2a2a (subtle borders)
+```
+
+### Custom Animations
+
+The site includes several custom CSS animations in `app/globals.css`:
+
+- `scanline` - Moving horizontal line effect (8s)
+- `flicker` - CRT screen flicker (0.15s)
+- `gridPulse` - Grid pattern pulsing (4s)
+- `blinkCursor` - Terminal cursor blinking (0.5s)
+- `typeAndDelete` - Terminal typing animation (4s)
+- `glitchShift` - Batman name transformation glitch (0.3s)
+
+## 🛠️ Tech Stack
+
+- **Framework:** Next.js 16.1.3 (App Router)
+- **React:** 19.2.3
+- **Language:** TypeScript 5
+- **Styling:** Tailwind CSS v4
+- **UI Components:** shadcn/ui (Card, Button)
+- **Animations:** Framer Motion 12.26.2
+- **Icons:** lucide-react
+- **Fonts:** Monospace stack (ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas)
+
+## 🛠️ Tech Stack
+
+- **Framework:** Next.js 16.1.3 (App Router)
+- **React:** 19.2.3
+- **Language:** TypeScript 5
+- **Styling:** Tailwind CSS v4
+- **UI Components:** shadcn/ui (Card, Button)
+- **Animations:** Framer Motion 12.26.2
+- **Icons:** lucide-react
+- **Fonts:** Monospace stack (ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas)
+
+## 📁 Project Structure
+
+```
+portfolio-website/
+├── app/
+│   ├── globals.css          # Global styles and terminal animations
+│   ├── layout.tsx            # Root layout
+│   └── page.tsx              # Main page with all sections
+├── components/
+│   ├── AboutSection.tsx      # About me with skills subsection
+│   ├── ContactSection.tsx    # Terminal-style contact interface
+│   ├── ExperienceSection.tsx # Dual-journey experience timeline
+│   ├── HeroSection.tsx       # Landing with Batman effect
+│   ├── Marquee.tsx           # Scrolling text banner
+│   ├── Navigation.tsx        # Fixed header navigation
+│   ├── ProjectsSection.tsx   # Project carousel with modals
+│   ├── TerminalLoader.tsx    # Reusable loading component
+│   └── ui/
+│       ├── button.tsx        # shadcn/ui button component
+│       └── card.tsx          # shadcn/ui card component
+├── lib/
+│   └── utils.ts              # Utility functions
+├── public/
+│   ├── documents/            # Document assets
+│   ├── logos/                # Logo assets
+│   ├── projects/             # Project images
+│   └── resume.pdf            # Resume PDF file
+├── components.json           # shadcn/ui configuration
+├── next.config.ts            # Next.js configuration
+├── package.json              # Dependencies
+├── postcss.config.mjs        # PostCSS configuration
+├── tailwind.config.ts        # Tailwind CSS configuration
+└── tsconfig.json             # TypeScript configuration
+```
+
+## 🚀 Deployment
+
+### Deploy on Vercel (Recommended)
+
+1. Push your code to GitHub
+2. Visit [Vercel](https://vercel.com/new)
+3. Import your GitHub repository
+4. Vercel will auto-detect Next.js and configure build settings
+5. Deploy!
+
+Your site will be live at `https://your-project.vercel.app`
+
+### Deploy on Other Platforms
+
+- **Netlify:** Connect GitHub repo and set build command to `npm run build`
+- **GitHub Pages:** Requires static export configuration
+- **Self-hosted:** Build with `npm run build` and serve the `.next` folder
+
+See [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## 📝 License
+
+MIT License - Copyright (c) 2026 Baman Prasad Guragain
+
+## 🤝 Contributing
+
+Feel free to fork this project and customize it for your own portfolio. If you find bugs or have suggestions, please open an issue!
+
+## 📧 Contact
+
+- **Email:** contact@bamanguragain.com.np
+- **GitHub:** [Your GitHub URL]
+- **LinkedIn:** [Your LinkedIn URL]
+
+---
+
+Built with ❤️ by Baman Prasad Guragain
