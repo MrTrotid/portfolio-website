@@ -18,10 +18,10 @@ A modern, terminal-themed portfolio website with CRT screen effects, scanlines, 
 ## 📑 Sections
 
 1. **Hero Section** - Introduction with Batman name transformation effect and CTA button
-2. **Marquee** - Scrolling text banner with terminal aesthetic
-3. **About Me** - Personal introduction with "Who I am", "What I do", and integrated Skills subsection
-4. **Projects** - Interactive carousel with 3 projects, detailed modals, and GitHub links
-5. **Experience** - Dual-journey toggle (Professional vs Organisation/Club) with timeline entries
+2. **About Me** - Personal introduction with "Who I am", "What I do", and integrated Skills subsection
+3. **Projects** - Interactive carousel with 3 projects, detailed modals, and GitHub links
+4. **Experience** - Dual-journey toggle (Professional vs Organisation/Club) with timeline entries
+5. **Testimonials** - Horizontal scrolling testimonials carousel with avatar images
 6. **Contact** - Terminal window interface with social media links and icons
 
 ## 🚀 Getting Started
@@ -166,14 +166,15 @@ portfolio-website/
 │   ├── ContactSection.tsx    # Terminal-style contact interface
 │   ├── ExperienceSection.tsx # Dual-journey experience timeline
 │   ├── HeroSection.tsx       # Landing with Batman effect
-│   ├── Marquee.tsx           # Scrolling text banner
 │   ├── Navigation.tsx        # Fixed header navigation
 │   ├── ProjectsSection.tsx   # Project carousel with modals
 │   ├── TerminalLoader.tsx    # Reusable loading component
+│   ├── TestimonialCarousel.tsx # Testimonials with horizontal scroll
 │   └── ui/
 │       ├── button.tsx        # shadcn/ui button component
 │       └── card.tsx          # shadcn/ui card component
 ├── lib/
+│   ├── profile.ts            # Centralized data (about, experience, skills)
 │   └── utils.ts              # Utility functions
 ├── public/
 │   ├── documents/            # Document assets

@@ -10,7 +10,7 @@ interface HeroSectionProps {
 
 export default function HeroSection({ onContactClick }: HeroSectionProps) {
   return (
-    <section id="hero" className="flex items-center justify-center relative py-24 pt-64 min-h-screen bg-[#323232]">
+    <section id="hero" className="flex items-center justify-center relative py-24 pt-64 min-h-screen bg-[#0a0a0a]">
       <div className="max-w-7xl mx-auto px-6 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left: Text Content */}

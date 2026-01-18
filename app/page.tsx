@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import HeroSection from '@/components/HeroSection';
-import Marquee from '@/components/Marquee';
+import TestimonialCarousel from '@/components/TestimonialCarousel';
 import AboutSection from '@/components/AboutSection';
 import ProjectsSection from '@/components/ProjectsSection';
 import ExperienceSection from '@/components/ExperienceSection';
@@ -79,10 +79,10 @@ export default function Home() {
       
       <main>
         <HeroSection onContactClick={handleContactClick} />
-        <Marquee />
         <AboutSection />
         <ProjectsSection />
         <ExperienceSection />
+        <TestimonialCarousel />
         <ContactSection />
       </main>
 

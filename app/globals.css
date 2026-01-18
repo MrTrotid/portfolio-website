@@ -5,10 +5,10 @@
 
 :root {
   --neon-green: #39ff14;
-  --card-bg: #1a1a1a;
-  --border-color: #2a2a2a;
+  --card-bg: #0a0a0a;
+  --border-color: #39ff14;
   --radius: 0.625rem;
-  --background: #323232;
+  --background: #0a0a0a;
   --foreground: #ededed;
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
@@ -125,7 +125,7 @@ body {
 
 .terminal-bg {
   position: relative;
-  background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+  background: #0a0a0a;
 }
 
 /* Grid pattern */

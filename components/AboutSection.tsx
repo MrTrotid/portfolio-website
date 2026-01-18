@@ -1,22 +1,10 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { profile } from '@/lib/profile';
 
 export default function AboutSection() {
-  const skillCategories = [
-    {
-      category: 'Frontend',
-      skills: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'HTML/CSS'],
-    },
-    {
-      category: 'Security',
-      skills: ['Penetration Testing', 'Network Security', 'Cryptography', 'OSINT', 'Web Security'],
-    },
-    {
-      category: 'Tools & Others',
-      skills: ['Git', 'Linux', 'Python', 'Burp Suite', 'Wireshark'],
-    },
-  ];
+  const skillCategories = profile.skills;
 
   return (
     <section id="about" className="flex items-center justify-center py-32">
@@ -44,15 +32,8 @@ export default function AboutSection() {
               className="border border-[var(--border-color)] bg-[var(--card-bg)] p-8 rounded-lg hover:border-[var(--neon-green)] transition-all duration-300"
             >
               <h3 className="text-2xl font-mono text-[var(--neon-green)] mb-4">Who I am</h3>
-              <p className="text-gray-300 font-mono text-sm leading-relaxed mb-4">
-                I'm a passionate student and cybersecurity enthusiast dedicated to building secure and efficient web applications. 
-                With a strong foundation in frontend development and security practices, I create projects that combine 
-                functionality with robust protection against vulnerabilities.
-              </p>
               <p className="text-gray-300 font-mono text-sm leading-relaxed">
-                My journey in tech is driven by curiosity and the desire to solve complex problems. Whether it's crafting 
-                responsive user interfaces or identifying security flaws, I approach each challenge with enthusiasm and 
-                meticulous attention to detail.
+                {profile.about.whoIAm}
               </p>
             </motion.div>
 
@@ -65,26 +46,12 @@ export default function AboutSection() {
             >
               <h3 className="text-2xl font-mono text-[var(--neon-green)] mb-4">What I do</h3>
               <ul className="space-y-3 font-mono text-sm text-gray-300">
-                <li className="flex items-start gap-3">
-                  <span className="text-[var(--neon-green)]">→</span>
-                  <span>Build responsive web applications with modern frameworks</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[var(--neon-green)]">→</span>
-                  <span>Test and identify security vulnerabilities</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[var(--neon-green)]">→</span>
-                  <span>Create intuitive user interfaces with smooth animations</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[var(--neon-green)]">→</span>
-                  <span>Implement secure coding practices</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-[var(--neon-green)]">→</span>
-                  <span>Collaborate on innovative projects</span>
-                </li>
+                {profile.about.whatIDo.map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <span className="text-[var(--neon-green)]">→</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
               </ul>
             </motion.div>
           </div>

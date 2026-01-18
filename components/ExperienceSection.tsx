@@ -4,81 +4,14 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Download, Eye } from 'lucide-react';
 import { useState } from 'react';
+import { profile } from '@/lib/profile';
 
 export default function ExperienceSection() {
   const [journeyType, setJourneyType] = useState<'professional' | 'organization'>('professional');
 
-  const professionalExperiences = [
-    {
-      role: 'Cybersecurity Researcher',
-      company: 'Self-Employed',
-      period: '2024 - Present',
-      description: 'Conducting security research and vulnerability assessments. Developing penetration testing methodologies and creating proof-of-concept exploits.',
-      achievements: [
-        'Identified and documented multiple security vulnerabilities',
-        'Developed security testing frameworks',
-        'Published security research findings',
-      ],
-    },
-    {
-      role: 'Full Stack Developer',
-      company: 'Personal Projects',
-      period: '2023 - Present',
-      description: 'Building responsive web applications with modern technologies. Focusing on user experience and security best practices.',
-      achievements: [
-        'Created 3+ full-stack projects',
-        'Implemented real-time data visualization',
-        'Optimized application performance',
-      ],
-    },
-    {
-      role: 'Student Developer',
-      company: 'Academic Projects',
-      period: '2022 - Present',
-      description: 'Developing projects as part of academic coursework. Collaborating with team members on group projects.',
-      achievements: [
-        'Collaborated on IoT projects',
-        'Implemented algorithm-based solutions',
-        'Presented project findings',
-      ],
-    },
-  ];
+  const professionalExperiences = profile.experiences.professional;
 
-  const organizationExperiences = [
-    {
-      role: 'Club President',
-      company: 'Tech Innovation Club',
-      period: '2024 - Present',
-      description: 'Leading the tech innovation club and organizing hackathons and workshops for members. Managing team projects and mentoring junior members.',
-      achievements: [
-        'Organized 4+ major hackathons',
-        'Mentored 20+ junior developers',
-        'Led team to win regional competition',
-      ],
-    },
-    {
-      role: 'Workshop Coordinator',
-      company: 'Security Awareness Organization',
-      period: '2023 - Present',
-      description: 'Coordinating cybersecurity awareness workshops and training sessions. Creating educational content for members on security best practices.',
-      achievements: [
-        'Conducted 10+ workshops',
-        'Created security training materials',
-        'Educated 200+ individuals on cyber safety',
-      ],
-    },
-    {
-      role: 'Community Contributor',
-      company: 'Open Source Community',
-      period: '2022 - Present',
-      description: 'Contributing to open-source projects and participating in community development initiatives. Helping new developers get started with contributions.',
-      achievements: [
-        'Contributed to 5+ open-source projects',
-        'Helped onboard 15+ new contributors',
-        'Maintained documentation and guides',
-      ],
-    },
-  ];
+  const organizationExperiences = profile.experiences.organization;
 
   const experiences = journeyType === 'professional' ? professionalExperiences : organizationExperiences;
 
