@@ -1,0 +1,21 @@
+<svg width="500" height="500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Hoodie figure -->
+  <ellipse cx="250" cy="400" rx="120" ry="80" fill="#1a1a1a"/>
+  <rect x="130" y="200" width="240" height="250" fill="#0a0a0a" rx="20"/>
+  
+  <!-- Head (anonymous) -->
+  <circle cx="250" cy="150" r="80" fill="#2a2a2a"/>
+  
+  <!-- Hood -->
+  <path d="M 170 100 Q 250 50 330 100 L 320 200 Q 250 150 180 200 Z" fill="#0a0a0a"/>
+  
+  <!-- Cap brim -->
+  <ellipse cx="250" cy="120" rx="90" ry="15" fill="#1a1a1a"/>
+  
+  <!-- Accent lines -->
+  <line x1="200" y1="300" x2="220" y2="320" stroke="#39ff14" stroke-width="2"/>
+  <line x1="280" y1="300" x2="300" y2="320" stroke="#39ff14" stroke-width="2"/>
+  
+  <!-- Text effect -->
+  <text x="250" y="480" font-family="monospace" font-size="16" fill="#39ff14" text-anchor="middle">CYBER_SEC</text>
+</svg>
