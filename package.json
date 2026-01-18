@@ -9,8 +9,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "deploy": "next build && touch out/.nojekyll && gh-pages -d out -b main"
+    "lint": "next lint"
   },
   "keywords": [
     "portfolio",
