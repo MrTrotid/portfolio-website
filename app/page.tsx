@@ -4,13 +4,15 @@ import { useState, useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import HeroSection from '@/components/HeroSection';
 import Marquee from '@/components/Marquee';
-import SkillsSection from '@/components/SkillsSection';
+import AboutSection from '@/components/AboutSection';
 import ProjectsSection from '@/components/ProjectsSection';
-import ResumeSection from '@/components/ResumeSection';
+import ExperienceSection from '@/components/ExperienceSection';
 import ContactSection from '@/components/ContactSection';
+import { FullPageLoader } from '@/components/TerminalLoader';
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState('hero');
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleNavigate = (section: string) => {
     setActiveSection(section);
@@ -25,6 +27,15 @@ export default function Home() {
   };
 
   useEffect(() => {
+    // Simulate initial loading
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       
@@ -34,7 +45,7 @@ export default function Home() {
         return;
       }
 
-      const sections = ['skills', 'project', 'resume', 'contact'];
+      const sections = ['about', 'project', 'experience', 'contact'];
       const offset = scrollPosition + 400;
 
       for (const section of sections) {
@@ -53,16 +64,25 @@ export default function Home() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  if (isLoading) {
+    return <FullPageLoader text="Initializing..." />;
+  }
+
   return (
-    <div className="min-h-screen bg-[#323232] text-[var(--foreground)]">
-      <Navigation activeSection={activeSection} onNavigate={handleNavigate} />
+    <>
+      {/* Terminal background effects */}
+      <div className="crt-overlay" />
+      <div className="terminal-vignette" />
+      
+      <div className="min-h-screen terminal-bg text-[var(--foreground)] relative z-10">
+        <Navigation activeSection={activeSection} onNavigate={handleNavigate} />
       
       <main>
         <HeroSection onContactClick={handleContactClick} />
         <Marquee />
-        <SkillsSection />
+        <AboutSection />
         <ProjectsSection />
-        <ResumeSection />
+        <ExperienceSection />
         <ContactSection />
       </main>
 
@@ -70,10 +90,11 @@ export default function Home() {
       <footer className="border-t border-[var(--border-color)] py-8">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <p className="text-gray-400 font-mono text-sm">
-            © 2026 Baman. Built with Next.js, Tailwind CSS, and Framer Motion.
+            © 2026 Baman Prasad Guragain  / Built with Next.js, Tailwind CSS, and Framer Motion.
           </p>
         </div>
       </footer>
-    </div>
+      </div>
+    </>
   );
 }

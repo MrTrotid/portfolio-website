@@ -10,7 +10,7 @@ interface NavigationProps {
 }
 
 export default function Navigation({ activeSection, onNavigate }: NavigationProps) {
-  const sections = useMemo(() => ['Skills', 'Project', 'Resume', 'Contact'], []);
+  const sections = useMemo(() => ['About', 'Project', 'Experience', 'Contact'], []);
   const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
 
   useEffect(() => {

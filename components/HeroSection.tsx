@@ -21,7 +21,11 @@ export default function HeroSection({ onContactClick }: HeroSectionProps) {
             className="space-y-6"
           >
             <h1 className="text-5xl md:text-6xl font-bold font-mono leading-tight">
-              Baman is a{' '}
+              <span className="name-hover">
+                <span className="original-text">Baman</span>
+                <span className="hover-text text-[var(--neon-green)]">Batman</span>
+              </span>{' '}
+              is a{' '}
               <span className="text-[var(--neon-green)]">student</span> and{' '}
               <span className="text-[var(--neon-green)]">cyber-security</span>{' '}
               <span className="text-gray-400">enthusiast</span>
