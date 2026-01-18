@@ -1,10 +1,10 @@
-# Personal Portfolio Website - Terminal/Hacker Aesthetic
+# Personal Portfolio Website - Terminal Aesthetic
 
 A modern, terminal-themed portfolio website with CRT screen effects, scanlines, and cybersecurity aesthetics built with Next.js, Tailwind CSS, shadcn/ui, and Framer Motion.
 
 ## ✨ Features
 
-- 🖥️ **Terminal/Hacker Aesthetic** - CRT screen effects, scanlines, grid patterns, and vignette overlays
+- 🖥️ **Terminal Aesthetic** - CRT screen effects, scanlines, grid patterns, and vignette overlays
 - 🎯 **Interactive Elements** - Name hover transformation (Baman → Batman with glitch effect)
 - 🚀 **Built with Next.js 16** and React 19
 - 💅 **Styled with Tailwind CSS v4** - Custom terminal-themed animations
@@ -130,17 +130,6 @@ The site includes several custom CSS animations in `app/globals.css`:
 - `blinkCursor` - Terminal cursor blinking (0.5s)
 - `typeAndDelete` - Terminal typing animation (4s)
 - `glitchShift` - Batman name transformation glitch (0.3s)
-
-## 🛠️ Tech Stack
-
-- **Framework:** Next.js 16.1.3 (App Router)
-- **React:** 19.2.3
-- **Language:** TypeScript 5
-- **Styling:** Tailwind CSS v4
-- **UI Components:** shadcn/ui (Card, Button)
-- **Animations:** Framer Motion 12.26.2
-- **Icons:** lucide-react
-- **Fonts:** Monospace stack (ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas)
 
 ## 🛠️ Tech Stack
 
