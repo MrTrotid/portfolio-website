@@ -242,100 +242,50 @@ body {
   position: relative;
   display: inline-block;
   cursor: pointer;
-  perspective: 1000px;
-}
-
-.name-hover-container {
-  position: relative;
-  display: inline-block;
-  width: 100%;
-  height: 1em;
-}
-
-.name-hover .original-text,
-.name-hover .hover-text {
-  display: inline-block;
 }
 
 .name-hover .original-text {
+  display: inline-block;
   opacity: 1;
-  transform: translateX(0);
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  transform: translateY(0);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .name-hover .hover-text {
   position: absolute;
   left: 0;
   top: 0;
+  display: inline-block;
   opacity: 0;
-  transform: translateX(-20px);
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
-  text-shadow: 0 0 6px #39ff14;
+  transform: translateY(100%);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  text-shadow: 0 0 8px #39ff14;
+  pointer-events: none;
 }
 
 .name-hover:hover .original-text {
   opacity: 0;
-  transform: translateX(20px);
-  clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
-  animation: slideLeftFlicker 0.6s ease-in-out;
+  transform: translateY(-100%);
 }
 
 .name-hover:hover .hover-text {
   opacity: 1;
-  transform: translateX(0);
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-  animation: slideInFlicker 0.6s ease-in-out;
+  transform: translateY(0);
+  animation: terminalPulse 0.5s ease-in-out;
 }
 
-@keyframes slideLeftFlicker {
+@keyframes terminalPulse {
   0% {
-    opacity: 1;
-    transform: translateX(0);
-    text-shadow: 0 0 6px #39ff14;
-  }
-  25% {
-    opacity: 0.7;
-    text-shadow: 1px 0 4px #39ff14, -1px 0 4px #00f0ff;
-  }
-  50% {
-    opacity: 0.4;
-    text-shadow: -1px 0 6px #39ff14;
-  }
-  75% {
-    opacity: 0.2;
-    text-shadow: 1px 0 4px #00f0ff;
-  }
-  100% {
-    opacity: 0;
-    transform: translateX(20px);
-    text-shadow: 0 0 6px #39ff14;
-  }
-}
-
-@keyframes slideInFlicker {
-  0% {
-    opacity: 0;
-    transform: translateX(-20px);
     text-shadow: 0 0 4px #39ff14;
-  }
-  25% {
-    opacity: 0.6;
-    text-shadow: -1px 0 6px #39ff14, 1px 0 4px #00f0ff;
+    opacity: 0.7;
   }
   50% {
-    opacity: 0.85;
-    text-shadow: 1px 0 8px #39ff14;
-  }
-  75% {
-    opacity: 0.95;
-    text-shadow: -1px 0 6px #39ff14;
+    text-shadow: 0 0 12px #39ff14;
+    opacity: 1;
   }
   100% {
+    text-shadow: 0 0 8px #39ff14;
     opacity: 1;
-    transform: translateX(0);
-    text-shadow: 0 0 6px #39ff14;
   }
 }
 
