@@ -142,17 +142,6 @@ The site includes several custom CSS animations in `app/globals.css`:
 - **Icons:** lucide-react
 - **Fonts:** Monospace stack (ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas)
 
-## 🛠️ Tech Stack
-
-- **Framework:** Next.js 16.1.3 (App Router)
-- **React:** 19.2.3
-- **Language:** TypeScript 5
-- **Styling:** Tailwind CSS v4
-- **UI Components:** shadcn/ui (Card, Button)
-- **Animations:** Framer Motion 12.26.2
-- **Icons:** lucide-react
-- **Fonts:** Monospace stack (ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas)
-
 ## 📁 Project Structure
 
 ```
