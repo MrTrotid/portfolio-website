@@ -10,7 +10,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "next build && touch out/.nojekyll && gh-pages -d out"
+    "deploy": "next build && touch out/.nojekyll && gh-pages -d out -b main"
   },
   "keywords": [
     "portfolio",
