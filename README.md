@@ -219,8 +219,7 @@ Feel free to fork this project and customize it for your own portfolio. If you f
 ## 📧 Contact
 
 - **Email:** contact@bamanguragain.com.np
-- **GitHub:** [Your GitHub URL]
-- **LinkedIn:** [Your LinkedIn URL]
+- **LinkedIn:** www.linkedin.com/in/mrtrotid/
 
 ---
 
