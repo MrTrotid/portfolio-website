@@ -5,7 +5,7 @@ export function middleware(request: NextRequest) {
 
   // If subdomain is resume.*, redirect to resume PDF
   if (hostname?.startsWith('resume.')) {
-    return NextResponse.redirect(`${request.nextUrl.origin}/resume.pdf`);
+    return NextResponse.redirect(new URL('/resume.pdf', request.url), { status: 301 });
   }
 
   return NextResponse.next();
@@ -14,3 +14,4 @@ export function middleware(request: NextRequest) {
 export const config = {
   matcher: ['/(.*)', '/api/(.*)'],
 };
+
