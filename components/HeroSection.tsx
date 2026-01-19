@@ -74,7 +74,7 @@ export default function HeroSection({ onContactClick }: HeroSectionProps) {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="space-y-6 text-left w-full"
           >
-            <h1 className="text-5xl md:text-6xl font-bold font-mono leading-tight">
+            <h1 className="text-5xl md:text-6xl font-bold font-mono leading-tight max-w-5xl w-full">
               <span className="name-hover">
                 <span className="original-text">Baman</span>
                 <span className="hover-text text-[var(--neon-green)]">Batman</span>
@@ -82,7 +82,10 @@ export default function HeroSection({ onContactClick }: HeroSectionProps) {
               is a{' '}
               <span className="text-[var(--neon-green)]">student</span> and
               <br />
-              <span className="text-[var(--neon-green)] whitespace-nowrap">cyber-security enthusiast</span>
+              <span className="whitespace-nowrap">
+                <span className="text-[var(--neon-green)]">cyber-security</span>{' '}
+                <span className="text-white">enthusiast</span>
+              </span>
             </h1>
 
             <p className="text-lg md:text-xl text-gray-400 font-mono max-w-2xl">
@@ -131,7 +134,7 @@ export default function HeroSection({ onContactClick }: HeroSectionProps) {
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.8 }}
             className="absolute bottom-32 w-64 h-64 grid grid-cols-12 gap-1.5 opacity-15 pointer-events-none z-0"
-            style={{ left: 'calc(50% + 325px)', transform: 'translate(-50%, 25%)' }}
+            style={{ left: 'calc(50% + 325px)', transform: 'translate(0%, 25%)' }}
           >
             {[...Array(144)].map((_, i) => (
               <motion.div
