@@ -131,11 +131,12 @@ export default function ExperienceSection() {
 
           {/* Resume Section */}
           <motion.div
+            id="resume"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
-            className="mt-16 border border-[var(--neon-green)] bg-[var(--card-bg)] p-6 md:p-8 rounded-lg text-center"
+            className="mt-16 border border-[var(--neon-green)] bg-[var(--card-bg)] p-6 md:p-8 rounded-lg text-center scroll-mt-28 md:scroll-mt-36"
           >
             <h3 className="text-2xl md:text-3xl font-mono text-[var(--neon-green)] mb-2">
               <span className="text-[var(--neon-green)]">$</span> cat resume.pdf

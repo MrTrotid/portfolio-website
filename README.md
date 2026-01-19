@@ -6,12 +6,14 @@ A modern, terminal-themed portfolio website with CRT screen effects, scanlines, 
 
 - 🖥️ **Terminal Aesthetic** - CRT screen effects, scanlines, grid patterns, and vignette overlays
 - 🎯 **Interactive Elements** - Name hover transformation (Baman → Batman with glitch effect)
+- 🕹️ **Peel-to-reveal easter egg** - Hidden mini game under a peel overlay in hero
+- 🧭 **Floating nav plateaus** - Left/right floating CTA stacks with subtle lift animations and green under-glow
 - 🚀 **Built with Next.js 16** and React 19
 - 💅 **Styled with Tailwind CSS v4** - Custom terminal-themed animations
 - 🎭 **Smooth animations** with Framer Motion - Page transitions, carousels, and scroll effects
 - 📱 **Fully Responsive** - Optimized for mobile, tablet, and desktop
-- 🎯 **Single-page application** with smooth scrolling and active section tracking
-- 📄 **Resume Integration** - View and download PDF resume functionality
+- 🎯 **Single-page application** with smooth scrolling, active section tracking, and square caret “to top” control
+- 📄 **Resume Integration** - View and download PDF resume functionality (hero floating button → `#resume`)
 - 🎨 **Monospace Typography** - UI-monospace font stack for authentic terminal feel
 - ⚡ **Loading Animations** - Terminal-styled loader with typing effects
 
@@ -21,8 +23,9 @@ A modern, terminal-themed portfolio website with CRT screen effects, scanlines, 
 2. **About Me** - Personal introduction with "Who I am", "What I do", and integrated Skills subsection
 3. **Projects** - Interactive carousel with 3 projects, detailed modals, and GitHub links
 4. **Experience** - Dual-journey toggle (Professional vs Organisation/Club) with timeline entries
-5. **Testimonials** - Horizontal scrolling testimonials carousel with avatar images
-6. **Contact** - Terminal window interface with social media links and icons
+5. **Resume** - Inside Experience section (`#resume`) with view/download actions
+6. **Testimonials** - Horizontal scrolling testimonials carousel with avatar images
+7. **Contact** - Terminal window interface with social media links and icons (also in top nav)
 
 ## 🚀 Getting Started
 
@@ -76,6 +79,8 @@ Replace these files in the `/public` directory:
 - Update your name and tagline
 - Customize the Batman hover effect text if desired
 - Modify the CTA button text
+- Floating buttons: About, Projects, Experience, **Resume** (`#resume` anchor)
+- Peel-to-reveal tic-tac-toe mini game copy/colors
 
 #### About Section (`components/AboutSection.tsx`)
 - Edit "Who I am" personal introduction
@@ -101,12 +106,14 @@ Replace these files in the `/public` directory:
 #### Experience Section (`components/ExperienceSection.tsx`)
 - Update `professionalExperiences` array with your work history
 - Update `organizationExperiences` array with your club/organization roles
+- Resume block lives here (`id="resume"`) with scroll margin to avoid overlapping the testimonial carousel
 - Both sections include: role, company, period, description, and achievements
 
 #### Contact Section (`components/ContactSection.tsx`)
 - Update email address
 - Update social media links (GitHub, LinkedIn, YouTube, Instagram)
 - Add or remove contact methods as needed
+- Linked from top navigation (`Contact`) and hero CTA handler
 
 ## 🎨 Terminal Effects & Styling
 
