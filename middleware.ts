@@ -3,9 +3,9 @@ import { NextRequest, NextResponse } from 'next/server';
 export function middleware(request: NextRequest) {
   const hostname = request.headers.get('host');
 
-  // If subdomain is resume.*, redirect to resume PDF
+  // If subdomain is resume.*, rewrite to resume page (keeps URL)
   if (hostname?.startsWith('resume.')) {
-    return NextResponse.redirect('https://bamanguragain.com.np/resume.pdf', { status: 301 });
+    return NextResponse.rewrite(new URL('/resume-subdomain', request.url));
   }
 
   return NextResponse.next();
