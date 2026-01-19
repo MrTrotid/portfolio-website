@@ -76,7 +76,7 @@ export default function ProjectsSection() {
             <span className="text-[var(--neon-green)]">#</span>projects
           </h2>
           <p className="text-gray-400 text-center mb-12 font-mono">
-            Things I&apos;ve built
+            $ ls -la my_projects/
           </p>
 
           <div className="relative">

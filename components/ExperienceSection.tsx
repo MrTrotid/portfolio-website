@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Download, Eye } from 'lucide-react';
 import { useState } from 'react';
+import Image from 'next/image';
 import { profile } from '@/lib/profile';
 
 export default function ExperienceSection() {
@@ -75,7 +76,7 @@ export default function ExperienceSection() {
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: idx * 0.1 }}
                   viewport={{ once: true }}
-                  className="border border-[var(--border-color)] bg-[var(--card-bg)] p-8 rounded-lg hover:border-[var(--neon-green)] transition-all duration-300"
+                  className="border border-[var(--border-color)] bg-[var(--card-bg)] p-8 rounded-lg hover:border-[var(--neon-green)] transition-all duration-300 relative"
                 >
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex-1">
@@ -86,7 +87,7 @@ export default function ExperienceSection() {
                         {exp.company}
                       </p>
                     </div>
-                    <span className="px-4 py-2 bg-[#0a0a0a] border border-[var(--neon-green)] rounded font-mono text-xs text-[var(--neon-green)] whitespace-nowrap">
+                    <span className="px-4 py-2 bg-[#0a0a0a] border border-[var(--neon-green)] rounded font-mono text-xs text-[var(--neon-green)] whitespace-nowrap ml-4">
                       {exp.period}
                     </span>
                   </div>
@@ -111,6 +112,18 @@ export default function ExperienceSection() {
                       ))}
                     </ul>
                   </div>
+
+                  {exp.logo && (
+                    <div className="absolute bottom-4 right-4">
+                      <Image
+                        src={exp.logo}
+                        alt={exp.company}
+                        width={50}
+                        height={50}
+                        className="w-12 h-12 md:w-14 md:h-14 object-contain rounded border border-[var(--neon-green)] p-2 bg-black/50"
+                      />
+                    </div>
+                  )}
                 </motion.div>
               ))}
             </motion.div>
@@ -122,21 +135,21 @@ export default function ExperienceSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
-            className="mt-16 border border-[var(--neon-green)] bg-[var(--card-bg)] p-8 rounded-lg text-center"
+            className="mt-16 border border-[var(--neon-green)] bg-[var(--card-bg)] p-6 md:p-8 rounded-lg text-center"
           >
-            <h3 className="text-2xl font-mono text-[var(--neon-green)] mb-2">
-              <span className="text-[var(--neon-green)]">$</span> resume
+            <h3 className="text-2xl md:text-3xl font-mono text-[var(--neon-green)] mb-2">
+              <span className="text-[var(--neon-green)]">$</span> cat resume.pdf
             </h3>
-            <p className="text-gray-400 font-mono text-sm mb-6">
-              View or download my professional resume
+            <p className="text-gray-400 font-mono text-xs md:text-sm mb-6">
+              My digital footprint & professional journey
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center w-full">
               <Button
                 onClick={() => window.open('/resume.pdf', '_blank')}
-                className="border-[var(--neon-green)] text-[var(--neon-green)] hover:bg-[var(--neon-green)] hover:text-black font-mono border flex items-center justify-center gap-2"
+                className="border-[var(--neon-green)] text-[var(--neon-green)] hover:bg-[var(--neon-green)] hover:text-black font-mono border flex items-center justify-center gap-2 text-xs sm:text-sm md:text-base"
                 variant="outline"
               >
-                <Eye size={18} /> View Resume
+                <Eye size={16} className="sm:w-5 sm:h-5" /> <span className="hidden sm:inline">View Resume</span><span className="sm:hidden">View</span>
               </Button>
               <Button
                 onClick={() => {
@@ -147,10 +160,10 @@ export default function ExperienceSection() {
                   link.click();
                   document.body.removeChild(link);
                 }}
-                className="border-[var(--neon-green)] text-[var(--neon-green)] hover:bg-[var(--neon-green)] hover:text-black font-mono border flex items-center justify-center gap-2"
+                className="border-[var(--neon-green)] text-[var(--neon-green)] hover:bg-[var(--neon-green)] hover:text-black font-mono border flex items-center justify-center gap-2 text-xs sm:text-sm md:text-base"
                 variant="outline"
               >
-                <Download size={18} /> Download Resume
+                <Download size={16} className="sm:w-5 sm:h-5" /> <span className="hidden sm:inline">Download</span><span className="sm:hidden">DL</span>
               </Button>
             </div>
           </motion.div>

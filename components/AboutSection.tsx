@@ -63,17 +63,17 @@ export default function AboutSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="mb-8"
+              className="mb-8 text-center"
             >
-              <h3 className="text-3xl font-mono text-[var(--neon-green)] mb-2">
+              <h3 className="text-3xl md:text-4xl font-mono text-[var(--neon-green)] mb-2">
                 <span className="text-[var(--neon-green)]">$</span> skills
               </h3>
-              <p className="text-gray-400 font-mono text-sm">
-                Technologies and tools I work with
+              <p className="text-gray-400 font-mono text-sm md:text-base">
+                $ cat tech_arsenal.txt
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
               {skillCategories.map((category, idx) => (
                 <motion.div
                   key={category.category}

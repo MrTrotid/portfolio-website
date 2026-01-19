@@ -4,6 +4,7 @@ export type ExperienceItem = {
   period: string;
   description: string;
   achievements: string[];
+  logo?: string;
 };
 
 export type SkillCategory = {
@@ -64,6 +65,7 @@ export const profile = {
           'Implemented technical solutions for events and registrations',
           'Enhanced communication and streamlined workflows',
         ],
+        logo: '/logos/sos.png',
       },
       {
         role: 'Executive',
@@ -77,6 +79,7 @@ export const profile = {
           'Led alumni meet and homecoming implementation',
           'Fostered community engagement and networking',
         ],
+        logo: '/logos/stxaviers.png',
       },
       {
         role: 'Event Manager & Deputy Manager of Information Technology',
@@ -89,6 +92,7 @@ export const profile = {
           'Coordinated event logistics and facilitated teamwork',
           'Supported program operations with IT skills',
         ],
+        logo: '/logos/JCI_logo.jpeg',
       },
       {
         role: 'Patrol Leader',
@@ -101,6 +105,7 @@ export const profile = {
           'Coordinated tasks and ensured team collaboration',
           'Developed leadership, communication, and outdoor skills',
         ],
+        logo: '/logos/Nepal_scout.png',
       },
     ] as ExperienceItem[],
   },
