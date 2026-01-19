@@ -131,7 +131,7 @@ export default function HeroSection({ onContactClick }: HeroSectionProps) {
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.8 }}
             className="absolute bottom-32 w-64 h-64 grid grid-cols-12 gap-1.5 opacity-15 pointer-events-none z-0"
-            style={{ left: 'calc(50% + 325px)', transform: 'translateX(-50%)', transform : 'translateY(25%)' }}
+            style={{ left: 'calc(50% + 325px)', transform: 'translate(-50%, 25%)' }}
           >
             {[...Array(144)].map((_, i) => (
               <motion.div
