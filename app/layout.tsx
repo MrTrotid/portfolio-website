@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { metadataBase, siteDescription, siteKeywords, siteName, siteUrl } from "../lib/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,8 +14,39 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio - MrTrotid",
-  description: "Personal portfolio website - Student & Cybersecurity Enthusiast",
+  metadataBase,
+  title: siteName,
+  description: siteDescription,
+  keywords: siteKeywords,
+  authors: [{ name: "Baman Prasad Guragain", url: siteUrl }],
+  creator: "Baman Prasad Guragain",
+  publisher: "Baman Prasad Guragain",
+  alternates: {
+    canonical: siteUrl,
+  },
+  openGraph: {
+    type: "website",
+    url: siteUrl,
+    siteName: siteName,
+    title: siteName,
+    description: siteDescription,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteName,
+    description: siteDescription,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   icons: {
     icon: "logo.svg",
   },
