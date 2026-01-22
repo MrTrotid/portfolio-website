@@ -23,7 +23,7 @@ export default function ExperienceSection() {
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
         >
           <h2 className="text-4xl md:text-5xl font-bold font-mono mb-4 text-center">
             <span className="text-[var(--neon-green)]">#</span>experience
@@ -75,7 +75,7 @@ export default function ExperienceSection() {
                   initial={{ opacity: 0, x: idx % 2 === 0 ? -30 : 30 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: idx * 0.1 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: false }}
                   className="border border-[var(--border-color)] bg-[var(--card-bg)] p-8 rounded-lg hover:border-[var(--neon-green)] transition-all duration-300 relative"
                 >
                   <div className="flex items-start justify-between mb-4">

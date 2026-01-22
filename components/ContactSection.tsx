@@ -48,7 +48,7 @@ export default function ContactSection() {
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           className="text-center"
         >
           <h2 className="text-4xl md:text-5xl font-bold font-mono mb-4">
@@ -98,7 +98,7 @@ export default function ContactSection() {
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       transition={{ delay: idx * 0.1 }}
-                      viewport={{ once: true }}
+                      viewport={{ once: false }}
                       onMouseEnter={() => setHoveredLink(contact.name)}
                       onMouseLeave={() => setHoveredLink('')}
                       className="block group"

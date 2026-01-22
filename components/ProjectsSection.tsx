@@ -70,7 +70,7 @@ export default function ProjectsSection() {
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
         >
           <h2 className="text-4xl md:text-5xl font-bold font-mono mb-4 text-center">
             <span className="text-[var(--neon-green)]">#</span>projects

@@ -28,40 +28,6 @@ export default function HeroSection({ onContactClick }: HeroSectionProps) {
 
   return (
     <section id="hero" className="flex items-center justify-center relative py-24 pt-40 min-h-screen bg-[#0a0a0a] overflow-hidden">
-      {/* Floating Navigation Buttons - Left Side */}
-      <div className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 flex flex-col gap-4 z-20">
-        {navigationButtons.slice(0, 2).map((btn, idx) => (
-          <motion.button
-            key={btn.href}
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0, y: [0, -6, 0] }}
-            transition={{ delay: 0.3 + idx * 0.1, duration: 3.5, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut' }}
-            whileHover={{ scale: 1.05, x: 5 }}
-            onClick={() => handleNavClick(btn.href)}
-            className="relative overflow-visible px-4 py-2 border border-[var(--neon-green)] text-[var(--neon-green)] hover:bg-[var(--neon-green)] hover:text-black transition-all duration-300 font-mono text-xs md:text-sm rounded bg-black/50 backdrop-blur-sm shadow-lg shadow-[var(--neon-green)]/20 before:absolute before:inset-0 before:translate-y-1.5 before:rounded before:bg-[var(--neon-green)]/15 before:blur before:-z-10"
-          >
-            {btn.label}
-          </motion.button>
-        ))}
-      </div>
-
-      {/* Floating Navigation Buttons - Right Side */}
-      <div className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 flex flex-col gap-4 z-20">
-        {navigationButtons.slice(2).map((btn, idx) => (
-          <motion.button
-            key={btn.href}
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0, y: [0, -6, 0] }}
-            transition={{ delay: 0.3 + idx * 0.1, duration: 3.5, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut' }}
-            whileHover={{ scale: 1.05, x: -5 }}
-            onClick={() => handleNavClick(btn.href)}
-            className="relative overflow-visible px-4 py-2 border border-[var(--neon-green)] text-[var(--neon-green)] hover:bg-[var(--neon-green)] hover:text-black transition-all duration-300 font-mono text-xs md:text-sm rounded bg-black/50 backdrop-blur-sm shadow-lg shadow-[var(--neon-green)]/20 before:absolute before:inset-0 before:translate-y-1.5 before:rounded before:bg-[var(--neon-green)]/15 before:blur before:-z-10"
-          >
-            {btn.label}
-          </motion.button>
-        ))}
-      </div>
-
       <div className="max-w-4xl mx-auto px-6 w-full relative z-10">
         {/* Centered Content */}
         <motion.div

@@ -13,7 +13,7 @@ export default function AboutSection() {
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
         >
           <h2 className="text-4xl md:text-5xl font-bold font-mono mb-4 text-center">
             <span className="text-[var(--neon-green)]">#</span>about-me
@@ -28,7 +28,7 @@ export default function AboutSection() {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               className="border border-[var(--border-color)] bg-[var(--card-bg)] p-8 rounded-lg hover:border-[var(--neon-green)] transition-all duration-300"
             >
               <h3 className="text-2xl font-mono text-[var(--neon-green)] mb-4">Who I am</h3>
@@ -41,7 +41,7 @@ export default function AboutSection() {
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               className="border border-[var(--border-color)] bg-[var(--card-bg)] p-8 rounded-lg hover:border-[var(--neon-green)] transition-all duration-300"
             >
               <h3 className="text-2xl font-mono text-[var(--neon-green)] mb-4">What I do</h3>
@@ -62,7 +62,7 @@ export default function AboutSection() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               className="mb-8 text-center"
             >
               <h3 className="text-3xl md:text-4xl font-mono text-[var(--neon-green)] mb-2">
@@ -80,7 +80,7 @@ export default function AboutSection() {
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: false }}
                   className="border border-[var(--border-color)] bg-[#0a0a0a] p-6 rounded-lg hover:border-[var(--neon-green)] transition-all duration-300"
                 >
                   <h4 className="text-lg font-bold font-mono mb-4 text-[var(--neon-green)] text-center">
