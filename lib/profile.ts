@@ -50,6 +50,7 @@ export const profile = {
           'Collaborated with developer team to optimize website performance',
           'Helped team members understand new website features and architecture',
         ],
+        logo: '/logos/gadgetbyte.png',
       },
     ] as ExperienceItem[],
     organization: [
@@ -58,19 +59,18 @@ export const profile = {
         company: 'Interact Club of Matribhumi Baluwatar',
         period: 'Jul 2025 – Present',
         description:
-          'Responsible for designing digital materials and contributing to the development and maintenance of the club’s website to strengthen its online presence. Works closely with the executive team to implement technical solutions for events, registrations, and announcements, while supporting digital initiatives that enhance communication, streamline workflows, and improve overall member engagement.',
+          "Responsible for designing digital materials and contributing to the development and maintenance of the club's website to strengthen its online presence. Works closely with the executive team to implement technical solutions for events, registrations, and announcements, while supporting digital initiatives that enhance communication, streamline workflows, and improve overall member engagement.",
         achievements: [
           'Designed digital materials to strengthen online presence',
           'Developed and maintained the club website',
           'Implemented technical solutions for events and registrations',
           'Enhanced communication and streamlined workflows',
         ],
-        logo: '/logos/sos.png',
       },
       {
         role: 'Executive',
         company: 'SXC A Level Alumni Club',
-        period: 'Jan 2024 – Present',
+        period: 'Jan 2024 – Jan 2026',
         description:
           "Organized two national-level mathematics competitions, managing logistics, coordinating participants, and ensuring smooth execution. Led planning and implementation of alumni meet and homecoming events, alongside smaller alumni programs, fostering community engagement and networking opportunities. Associated with St. Xavier's College, Maitighar.",
         achievements: [
@@ -78,6 +78,20 @@ export const profile = {
           'Managed logistics and participant coordination',
           'Led alumni meet and homecoming implementation',
           'Fostered community engagement and networking',
+        ],
+        logo: '/logos/stxaviers.png',
+      },
+      {
+        role: 'Member',
+        company: 'SXC A level Computer Club',
+        period: 'Jan 2024 – Jan 2025',
+        description:
+          'Contributed to the development of a game featured in the college magazine, applying creativity and technical skills in a collaborative setting. Actively participated in various club events, supporting team efforts and gaining experience in event-based collaboration.',
+        achievements: [
+          'Contributed to game development featured in college magazine',
+          'Applied creativity and technical skills collaboratively',
+          'Participated in various club events',
+          'Gained experience in event-based collaboration',
         ],
         logo: '/logos/stxaviers.png',
       },
