@@ -3,9 +3,14 @@ import { NextRequest, NextResponse } from 'next/server';
 export const middleware = (request: NextRequest) => {
   const hostname = request.headers.get('host');
 
-  // If subdomain is resume.*, rewrite to resume page (keeps URL)
+  // If subdomain is resume.*, serve the resume PDF as the primary content.
   if (hostname?.startsWith('resume.')) {
-    return NextResponse.rewrite(new URL('/resume-subdomain', request.url));
+    const url = request.nextUrl.clone();
+    if (url.pathname === '/resume.pdf') {
+      return NextResponse.next();
+    }
+    url.pathname = '/resume.pdf';
+    return NextResponse.rewrite(url);
   }
 
   return NextResponse.next();

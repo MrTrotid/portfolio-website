@@ -23,7 +23,7 @@ export default function ProjectsSection() {
       image: '/projects/aqsentinel.png',
       images: ['/projects/aqsentinel.png'],
       isGroupProject: true,
-      githubUrl: '#',
+      githubUrl: 'https://github.com/rahatpaudel/aqsentinel',
     },
     {
       title: 'Sherlock Scramble Solver',
@@ -34,10 +34,10 @@ export default function ProjectsSection() {
       image: '/projects/sherlock.png',
       images: ['/projects/sherlock.png'],
       isGroupProject: false,
-      githubUrl: '#',
+      githubUrl: 'https://github.com/MrTrotid/Sherlock-Scramble-Solver',
     },
     {
-      title: 'Personal Portfolio',
+      title: 'Portfolio',
       subtitle: 'Modern portfolio website',
       description: 'A modern, responsive portfolio website built with Next.js and TailwindCSS. Features terminal aesthetic, smooth animations, and optimal performance.',
       fullDescription: 'This portfolio website showcases projects and skills with a unique terminal aesthetic. Built with Next.js 16, TypeScript, and TailwindCSS, featuring smooth animations using Framer Motion.',
@@ -45,7 +45,7 @@ export default function ProjectsSection() {
       image: '/projects/portfolio.png',
       images: ['/projects/portfolio.png'],
       isGroupProject: false,
-      githubUrl: '#',
+      githubUrl: 'https://github.com/MrTrotid/portfolio-website',
     },
   ];
 
@@ -152,14 +152,15 @@ export default function ProjectsSection() {
                         >
                           Learn More
                         </Button>
-                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                          <Button
-                            variant="ghost"
-                            className="text-white hover:text-[var(--neon-green)] font-mono flex items-center gap-2"
-                          >
+                        <Button
+                          asChild
+                          variant="ghost"
+                          className="text-white hover:text-[var(--neon-green)] font-mono flex items-center gap-2"
+                        >
+                          <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
                             <Github size={18} /> GitHub
-                          </Button>
-                        </a>
+                          </a>
+                        </Button>
                       </CardFooter>
                     </Card>
                   </div>
@@ -262,11 +263,14 @@ export default function ProjectsSection() {
               </div>
 
               <div className="bg-[#0a0a0a] border-t border-[var(--neon-green)] px-6 py-4 flex gap-3">
-                <a href={selectedProject.githubUrl} target="_blank" rel="noopener noreferrer" className="flex-1">
-                  <Button className="w-full border-[var(--neon-green)] text-[var(--neon-green)] hover:bg-[var(--neon-green)] hover:text-black font-mono border flex items-center justify-center gap-2">
+                <Button
+                  asChild
+                  className="w-full border-[var(--neon-green)] text-[var(--neon-green)] hover:bg-[var(--neon-green)] hover:text-black font-mono border flex items-center justify-center gap-2 flex-1"
+                >
+                  <a href={selectedProject.githubUrl} target="_blank" rel="noopener noreferrer">
                     <Github size={18} /> Visit GitHub
-                  </Button>
-                </a>
+                  </a>
+                </Button>
                 <Button
                   onClick={() => setSelectedProject(null)}
                   variant="ghost"
