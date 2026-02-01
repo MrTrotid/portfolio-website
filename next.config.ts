@@ -21,7 +21,7 @@ const nextConfig: NextConfig = {
               value: 'resume\\..+',
             },
           ],
-          destination: '/resume-subdomain/:path*',
+          destination: '/resume.pdf',
         },
       ],
     };
