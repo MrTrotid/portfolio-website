@@ -146,7 +146,7 @@ export default function ExperienceSection() {
             </p>
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center w-full">
               <Button
-                onClick={() => window.open('/resume.pdf', '_blank')}
+                onClick={() => window.open('https://resume.bamanguragain.com.np', '_blank')}
                 className="border-[var(--neon-green)] text-[var(--neon-green)] hover:bg-[var(--neon-green)] hover:text-black font-mono border flex items-center justify-center gap-2 text-xs sm:text-sm md:text-base"
                 variant="outline"
               >
@@ -155,7 +155,7 @@ export default function ExperienceSection() {
               <Button
                 onClick={() => {
                   const link = document.createElement('a');
-                  link.href = 'https://resume.bamanguragain.com.np/';
+                  link.href = '/resume.pdf';
                   link.download = 'Baman-Prasad-Guragain-Resume.pdf';
                   document.body.appendChild(link);
                   link.click();
