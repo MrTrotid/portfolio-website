@@ -155,7 +155,7 @@ export default function ExperienceSection() {
               <Button
                 onClick={() => {
                   const link = document.createElement('a');
-                  link.href = '/resume.pdf';
+                  link.href = 'https://resume.bamanguragain.com.np/';
                   link.download = 'Baman-Prasad-Guragain-Resume.pdf';
                   document.body.appendChild(link);
                   link.click();

@@ -58,7 +58,7 @@ export default function HeroSection({ onContactClick }: HeroSectionProps) {
             </h1>
 
             <p className="text-lg md:text-xl text-gray-400 font-mono max-w-2xl">
-              He crafts responsive websites where technologies meet creativity
+              He (sometimes) crafts responsive websites for fun
             </p>
           </motion.div>
 

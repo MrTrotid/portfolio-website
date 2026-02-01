@@ -22,19 +22,19 @@ export const profile = {
   },
   about: {
     whoIAm:
-      "I'm a cybersecurity enthusiast and developer focused on building secure, performant web applications. I enjoy blending modern frontend engineering with strong security practices to ship reliable products.",
+      "I'm a cybersecurity enthusiast and somewhat of a developer focused on building web applications (for fun). I enjoy blending modern frontend engineering with strong security practices (that I know of).",
     whatIDo: [
-      'Build responsive web applications with modern frameworks',
-      'Test and identify security vulnerabilities',
-      'Create intuitive user interfaces with smooth animations',
-      'Implement secure coding practices',
+      'Make random websites when I am bored',
+      'Try to identify security vulnerabilities',
+      'Explore cool and innovative technologies',
+      'Learn about cybersec',
       'Collaborate on innovative projects',
     ],
   },
   skills: [
     { category: 'Frontend', skills: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'HTML/CSS'] },
-    { category: 'Security', skills: ['Penetration Testing', 'Network Security', 'Cryptography', 'OSINT', 'Web Security'] },
-    { category: 'Tools & Others', skills: ['Git', 'Linux', 'Python', 'Burp Suite', 'Wireshark'] },
+    { category: 'Security', skills: ['Network Security', 'OSINT', 'Web Security'] },
+    { category: 'Tools & Others', skills: ['Git', 'Linux', 'Python'] },
   ] as SkillCategory[],
   experiences: {
     professional: [
