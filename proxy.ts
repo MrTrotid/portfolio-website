@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-export const middleware = (request: NextRequest) => {
+export const proxy = (request: NextRequest) => {
   const hostname = request.headers.get('host');
 
   // If subdomain is resume.*, serve the resume PDF as the primary content.
@@ -19,4 +19,3 @@ export const middleware = (request: NextRequest) => {
 export const config = {
   matcher: ['/(.*)', '/api/(.*)'],
 };
-

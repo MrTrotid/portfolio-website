@@ -45,7 +45,7 @@ const timelineEvents: TimelineEntry[] = [
     title: 'Joined as IT Officer',
     company: 'Interact Club of Matribhumi Baluwatar',
     type: 'join',
-    logo: '/logos/sos.png',
+    logo: '/logos/ICMB.png',
   },
   {
     date: 'Aug 2025',

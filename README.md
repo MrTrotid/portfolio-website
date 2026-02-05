@@ -68,10 +68,12 @@ Replace these files in the `/public` directory:
 - `/public/logo.svg` - Your logo (displayed in navigation)
 - `/public/hero.svg` - Hero section image (500x500px recommended)
 - `/public/resume.pdf` - Your actual resume PDF
-- `/public/projects/` - Add project images:
-  - `aqsentinel.png` - AQ Sentinel project image
-  - `sherlock.png` - Sherlock Scramble project image
-  - `portfolio.png` - Portfolio website preview
+- `/public/projects/` - Add project images (see [Image Guidelines](docs/IMAGE_GUIDELINES.md) for detailed specifications):
+  - **Card thumbnails:** 800x400px (2:1 aspect ratio)
+  - **Gallery images:** 1200x800px (3:2 aspect ratio) or 1920x1080px (16:9 aspect ratio)
+  - Optimize for web (under 200KB for cards, under 500KB for gallery)
+
+**📸 For detailed image specifications and best practices, see [docs/IMAGE_GUIDELINES.md](docs/IMAGE_GUIDELINES.md)**
 
 ### Update Content
 
@@ -96,12 +98,14 @@ Replace these files in the `/public` directory:
     description: 'Short description',
     fullDescription: 'Detailed description',
     techStack: ['Tech1', 'Tech2'],
-    image: '/projects/your-image.png',
-    images: ['/projects/img1.png', '/projects/img2.png'],
+    image: '/projects/your-image.png',        // Card: 800x400px
+    images: ['/projects/img1.png'],           // Gallery: 1200x800px or 1920x1080px
     isGroupProject: false,
+    priority: 1,                              // 1=Top, 2=Medium, 3=Low
     githubUrl: 'https://github.com/yourusername/repo'
   }
   ```
+- See [Image Guidelines](docs/IMAGE_GUIDELINES.md) for recommended dimensions and optimization tips
 
 #### Experience Section (`components/ExperienceSection.tsx`)
 - Update `professionalExperiences` array with your work history
@@ -205,18 +209,40 @@ Your site will be live at `https://your-project.vercel.app`
 
 See [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
+## � Documentation
+- **[Quick Reference](docs/QUICK_REFERENCE.md)** ⚡ - Fast access to common tasks and quick answers- **[Customization Guide](docs/CUSTOMIZATION.md)** - Detailed guide to customize the portfolio
+- **[Image Guidelines](docs/IMAGE_GUIDELINES.md)** - Image specifications and optimization tips
+- **[Contributing Guide](CONTRIBUTING.md)** - How to contribute to this project
+- **[Changelog](CHANGELOG.md)** - Version history and updates
+
 ## 📝 License
 
 MIT License - Copyright (c) 2026 Baman Prasad Guragain
 
 ## 🤝 Contributing
 
-Feel free to fork this project and customize it for your own portfolio. If you find bugs or have suggestions, please open an issue!
+Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+Whether you're fixing bugs, improving documentation, or proposing new features, your help is appreciated.
 
 ## 📧 Contact
 
 - **Email:** contact@bamanguragain.com.np
 - **LinkedIn:** www.linkedin.com/in/mrtrotid/
+- **GitHub:** github.com/MrTrotid
+
+## 🙏 Acknowledgments
+
+Built with:
+- [Next.js](https://nextjs.org/) - React framework
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS
+- [Framer Motion](https://www.framer.com/motion/) - Animation library
+- [shadcn/ui](https://ui.shadcn.com/) - UI components
+- [Lucide Icons](https://lucide.dev/) - Icon library
+
+---
+
+⭐ If you find this portfolio template useful, consider giving it a star on GitHub!
 
 ---
 

@@ -27,28 +27,19 @@ export default function HeroSection({ onContactClick }: HeroSectionProps) {
   };
 
   return (
-    <section id="hero" className="flex items-center justify-center relative py-24 pt-40 min-h-screen bg-[#0a0a0a] overflow-hidden">
-      <div className="max-w-4xl mx-auto px-6 w-full relative z-10">
-        {/* Centered Content */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="flex flex-col items-center justify-center gap-8"
-        >
-          {/* Text Content - Above Hero Image */}
+    <section id="hero" className="relative py-24 pt-40 min-h-screen bg-[#0a0a0a] overflow-hidden">
+      <div className="w-full px-6" style={{ maxWidth: '80rem', margin: '0 auto' }}>
+        <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-16 min-h-[80vh]">
+          {/* Left Column - Text Content */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="space-y-6 text-left w-full"
+            className="space-y-6 flex-shrink-0"
+            style={{ maxWidth: '42rem' }}
           >
-            <h1 className="text-5xl md:text-6xl font-bold font-mono leading-tight max-w-5xl w-full">
-              <span className="name-hover">
-                <span className="original-text">Baman</span>
-                <span className="hover-text text-[var(--neon-green)]">Batman</span>
-              </span>{' '}
-              is a{' '}
+            <h1 className="text-5xl md:text-6xl font-bold font-mono leading-tight">
+              Baman is a{' '}
               <span className="text-[var(--neon-green)]">student</span> and
               <br />
               <span className="whitespace-nowrap">
@@ -57,54 +48,21 @@ export default function HeroSection({ onContactClick }: HeroSectionProps) {
               </span>
             </h1>
 
-            <p className="text-lg md:text-xl text-gray-400 font-mono max-w-2xl">
+            <p className="text-lg md:text-xl text-gray-400 font-mono">
               He (sometimes) crafts responsive websites for fun
             </p>
           </motion.div>
 
-          {/* Contact Button - Slightly left and below text */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-            className="relative mb-4"
-            style={{ marginLeft: '910px', marginTop: '-40px' }}
-          >
-            <Button
-              onClick={onContactClick}
-              variant="outline"
-              className="border-2 border-[var(--neon-green)] text-[var(--neon-green)] hover:bg-[var(--neon-green)] hover:text-black transition-all duration-300 font-mono text-lg px-8 py-6"
+          {/* Right Column - Mini Game */}
+          <div className="relative flex flex-col items-center flex-shrink-0">
+            {/* Mini Game Area - Tic Tac Toe */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.8 }}
+              className="flex-shrink-0"
+              style={{ width: '16rem', height: '16rem' }}
             >
-              Contact me!!
-            </Button>
-          </motion.div>
-
-          {/* Hero Image - Below contact button */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="relative"
-            style={{ marginTop: '-100px' }}
-          >
-            <Image
-              src="/hero.svg"
-              alt="Baman - Cyber Security Enthusiast"
-              width={400}
-              height={400}
-              className="w-full max-w-xs md:max-w-sm object-contain"
-              priority
-            />
-          </motion.div>
-
-          {/* Mini Game Area - Tic Tac Toe */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.8 }}
-            className="absolute bottom-32 w-64 h-64 z-0"
-            style={{ left: 'calc(50% + 325px)', transform: 'translate(0%, 25%)' }}
-          >
             <div className="relative w-full h-full">
               <motion.div
                 initial={{ opacity: 1, rotateZ: 0, scale: 1, y: 0 }}
@@ -144,7 +102,8 @@ export default function HeroSection({ onContactClick }: HeroSectionProps) {
               </motion.div>
             </div>
           </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -17,8 +17,8 @@ export default function ExperienceSection() {
   const experiences = journeyType === 'professional' ? professionalExperiences : organizationExperiences;
 
   return (
-    <section id="experience" className="flex items-center justify-center py-32">
-      <div className="max-w-7xl mx-auto px-6 w-full">
+    <section id="experience" className="flex items-center justify-center py-32 overflow-hidden">
+      <div className="w-full px-6" style={{ maxWidth: '80rem', margin: '0 auto' }}>
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -78,8 +78,8 @@ export default function ExperienceSection() {
                   viewport={{ once: false }}
                   className="border border-[var(--border-color)] bg-[var(--card-bg)] p-8 rounded-lg hover:border-[var(--neon-green)] transition-all duration-300 relative"
                 >
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="flex-1">
+                  <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
+                    <div className="flex-1" style={{ minWidth: '200px' }}>
                       <h3 className="text-2xl font-bold font-mono text-white mb-1">
                         {exp.role}
                       </h3>
@@ -87,7 +87,7 @@ export default function ExperienceSection() {
                         {exp.company}
                       </p>
                     </div>
-                    <span className="px-4 py-2 bg-[#0a0a0a] border border-[var(--neon-green)] rounded font-mono text-xs text-[var(--neon-green)] whitespace-nowrap ml-4">
+                    <span className="px-4 py-2 bg-[#0a0a0a] border border-[var(--neon-green)] rounded font-mono text-xs text-[var(--neon-green)] whitespace-nowrap flex-shrink-0">
                       {exp.period}
                     </span>
                   </div>

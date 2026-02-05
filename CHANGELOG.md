@@ -2,6 +2,100 @@
 
 All notable changes to this portfolio website project.
 
+## [1.1.0] - 2026-02-05
+
+### 🎨 UI/UX Improvements
+- **Projects Section Enhancements**
+  - Added project priority system (1=Top, 2=Medium, 3=Low)
+  - Implemented 2-project carousel view on larger screens
+  - Added circular navigation (wrap-around arrows)
+  - Fixed image display with proper aspect ratios
+  - Improved project card layout and spacing
+
+- **New Project Added**
+  - MeroAushadhi: Medicine information platform for Nepali users
+  - Third place hackathon winner project
+  - Tech stack: React, Supabase, Flowise, Google Generative AI, Framer Motion
+
+- **Hero Section Updates**
+  - Removed Batman hover effect
+  - Removed Contact button from hero
+  - Removed hero image for cleaner layout
+  - Improved responsive grid layout to prevent overlapping
+
+- **Navigation Improvements**
+  - Made navigation fully responsive
+  - Added whitespace-nowrap to prevent text wrapping
+  - Improved button stability on zoom
+  - Fixed z-index for back-to-top button
+
+### 🐛 Bug Fixes
+- **Layout Stability**
+  - Fixed overlapping content when zooming in/out
+  - Added overflow protection to all sections
+  - Standardized max-widths across components (80rem)
+  - Changed grid layouts to flexbox with min/max constraints
+  - Fixed project carousel navigation arrows positioning
+
+- **Image Handling**
+  - Fixed project card image spacing
+  - Switched to object-cover for proper image fills
+  - Added proper padding to card components
+  - Fixed gallery image display in project modals
+
+- **Experience Section**
+  - Made role/date header flex-wrap for small screens
+  - Fixed text overlapping issues
+
+### 📚 Documentation
+- **New Documentation Added**
+  - Created comprehensive IMAGE_GUIDELINES.md
+    - Documented recommended image dimensions (800x400px cards, 1200x800px gallery)
+    - Added image optimization tips and best practices
+    - Included troubleshooting section for common issues
+  - Created detailed CUSTOMIZATION.md
+    - Complete guide for all sections (Hero, About, Projects, Experience, Contact)
+    - Styling and theme customization instructions
+    - Logo and asset replacement guidance
+  - Created CONTRIBUTING.md
+    - Contribution guidelines and code of conduct
+    - Development workflow and standards
+    - Coding conventions and commit message format
+  - Created QUICK_REFERENCE.md ⚡
+    - Fast access to common tasks
+    - Quick styling reference table
+    - Common troubleshooting guide
+    - Links to all documentation
+  - Updated README.md with comprehensive documentation links
+  - Added JSDoc comments throughout lib/profile.ts
+  - Added inline comments in ProjectsSection component
+
+- **Logo Updates**
+  - Added ICMB logo for Information Technology Officer role
+  - Updated all references to use correct logo paths
+
+### 🔧 Technical Changes
+- **Global CSS Updates**
+  - Added overflow-x: hidden to html and sections
+  - Added max-width: 100vw constraints
+  - Improved box-sizing for all elements
+  - Added responsive image sizing rules
+
+- **Component Refactoring**
+  - AboutSection: Changed to flex-wrap layout with constraints
+  - ExperienceSection: Made headers responsive
+  - ContactSection: Stabilized container width
+  - ProjectsSection: Improved carousel sizing logic with ResizeObserver
+  - Navigation: Added responsive gaps and flex-shrink protection
+
+### 🎯 Project Priority Sorting
+Projects now display in priority order:
+1. Priority 1: AQ Sentinel, MeroAushadhi
+2. Priority 2: Portfolio
+3. Priority 3: Sherlock Scramble Solver
+
+---
+
 ## [1.0.0] - 2026-01-18
 
 ### 🎉 Initial Release

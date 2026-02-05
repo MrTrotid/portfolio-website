@@ -87,8 +87,8 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-[var(--border-color)] py-8">
-        <div className="max-w-7xl mx-auto px-6 text-center">
+      <footer className="border-t border-[var(--border-color)] py-8 overflow-hidden">
+        <div className="w-full px-6 text-center" style={{ maxWidth: '80rem', margin: '0 auto' }}>
           <p className="text-gray-400 font-mono text-sm">
             © 2026 Baman Prasad Guragain  / Built with Next.js, Tailwind CSS, and Framer Motion.
           </p>

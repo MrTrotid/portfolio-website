@@ -1,18 +1,43 @@
+/**
+ * Profile Configuration
+ * 
+ * This file contains all personal data displayed throughout the portfolio website.
+ * Update this file to customize the content without modifying component code.
+ * 
+ * @see docs/CUSTOMIZATION.md for detailed customization guide
+ */
+
+/**
+ * Experience Item Type
+ * Represents a single work experience or organization role.
+ */
 export type ExperienceItem = {
-  role: string;
-  company: string;
-  period: string;
-  description: string;
-  achievements: string[];
-  logo?: string;
+  role: string;           // Job title or position name
+  company: string;        // Company or organization name
+  period: string;         // Date range (e.g., "Jan 2024 – Present")
+  description: string;    // Brief role description (2-3 sentences)
+  achievements: string[]; // List of key achievements or responsibilities
+  logo?: string;          // Optional: Path to company logo (e.g., "/logos/company.png")
 };
 
+/**
+ * Skill Category Type
+ * Groups related skills under a category label.
+ */
 export type SkillCategory = {
-  category: string;
-  skills: string[];
+  category: string;  // Category name (e.g., "Frontend", "Security")
+  skills: string[];  // Array of skill names
 };
 
+/**
+ * Main Profile Object
+ * Contains all personal information displayed throughout the site.
+ */
 export const profile = {
+  /**
+   * Contact Links
+   * Displayed in navigation, contact section, and footer.
+   */
   links: {
     email: 'contact@bamanguragain.com.np',
     github: 'https://github.com/MrTrotid',
@@ -20,6 +45,11 @@ export const profile = {
     youtube: 'https://www.youtube.com/@MrTrotid',
     instagram: 'https://www.instagram.com/mrtrotid/',
   },
+  
+  /**
+   * About Section Content
+   * Displayed in the About Me section below the hero.
+   */
   about: {
     whoIAm:
       "I'm a cybersecurity enthusiast and somewhat of a developer focused on building web applications (for fun). I enjoy blending modern frontend engineering with strong security practices (that I know of).",
@@ -31,12 +61,30 @@ export const profile = {
       'Collaborate on innovative projects',
     ],
   },
+  
+  /**
+   * Skills
+   * Organized by category and displayed in the About section.
+   * Recommended: 3-5 categories with 3-7 skills each.
+   */
   skills: [
     { category: 'Frontend', skills: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'HTML/CSS'] },
     { category: 'Security', skills: ['Network Security', 'OSINT', 'Web Security'] },
     { category: 'Tools & Others', skills: ['Git', 'Linux', 'Python'] },
   ] as SkillCategory[],
+  
+  /**
+   * Experiences
+   * Split into two categories: Professional (work) and Organization (clubs/volunteer).
+   * Users can toggle between views in the Experience section.
+   * 
+   * Logo images should be placed in /public/logos/ (recommended: 100x100px PNG)
+   */
   experiences: {
+    /**
+     * Professional Experience
+     * Work history, internships, freelance projects.
+     */
     professional: [
       {
         role: 'SEO Content Writer',
@@ -53,6 +101,11 @@ export const profile = {
         logo: '/logos/gadgetbyte.png',
       },
     ] as ExperienceItem[],
+    
+    /**
+     * Organization & Club Experience
+     * Leadership roles, volunteer work, community involvement.
+     */
     organization: [
       {
         role: 'Information Technology Officer',
@@ -66,6 +119,7 @@ export const profile = {
           'Implemented technical solutions for events and registrations',
           'Enhanced communication and streamlined workflows',
         ],
+        logo: '/logos/ICMB.png',
       },
       {
         role: 'Executive',

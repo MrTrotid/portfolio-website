@@ -55,8 +55,8 @@ export default function TestimonialCarousel() {
   ];
 
   return (
-    <section className="py-16 overflow-hidden bg-[#0a0a0a] h-[600px] flex flex-col">
-      <div className="max-w-7xl mx-auto px-6 w-full h-full flex flex-col">
+    <section className="py-16 overflow-hidden bg-[#0a0a0a] flex flex-col\" style={{ minHeight: '600px', maxHeight: '600px' }}>
+      <div className="w-full px-6 h-full flex flex-col" style={{ maxWidth: '80rem', margin: '0 auto' }}>
         {/* Terminal Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

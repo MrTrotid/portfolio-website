@@ -7,11 +7,26 @@ import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { X, Github } from 'lucide-react';
 
+/**
+ * ProjectsSection Component
+ * 
+ * Displays a carousel of projects with detailed modal view.
+ * 
+ * IMAGE REQUIREMENTS:
+ * - Card thumbnails (image): 800x400px (2:1 aspect ratio) - displayed as object-cover
+ * - Gallery images (images[]): 1200x800px (3:2) or 1920x1080px (16:9) - displayed as object-cover
+ * - Place all images in /public/projects/
+ * - Optimize: <200KB for cards, <500KB for gallery
+ * 
+ * See docs/IMAGE_GUIDELINES.md for detailed specifications.
+ */
 export default function ProjectsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedProject, setSelectedProject] = useState<null | any>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [containerWidth, setContainerWidth] = useState(0);
+  const gap = 24;
+  const minCardWidth = 360;
 
   const projects = [
     {
@@ -23,6 +38,7 @@ export default function ProjectsSection() {
       image: '/projects/aqsentinel.png',
       images: ['/projects/aqsentinel.png'],
       isGroupProject: true,
+      priority: 1,
       githubUrl: 'https://github.com/rahatpaudel/aqsentinel',
     },
     {
@@ -34,6 +50,7 @@ export default function ProjectsSection() {
       image: '/projects/sherlock.png',
       images: ['/projects/sherlock.png'],
       isGroupProject: false,
+      priority: 3,
       githubUrl: 'https://github.com/MrTrotid/Sherlock-Scramble-Solver',
     },
     {
@@ -45,27 +62,59 @@ export default function ProjectsSection() {
       image: '/projects/portfolio.png',
       images: ['/projects/portfolio.png'],
       isGroupProject: false,
+      priority: 2,
       githubUrl: 'https://github.com/MrTrotid/portfolio-website',
     },
-  ];
+    {
+      title: 'MeroAushadhi',
+      subtitle: 'Medicine information platform for Nepali users',
+      description: 'Earned third place in a hackathon. A medicine information platform for Nepali-speaking users with searchable drug data and AI-assisted explanations.',
+      fullDescription: 'MeroAushadhi ("My Medicine" in Nepali) is a comprehensive medicine information application designed specifically for Nepali-speaking users. It leverages cutting-edge technology to make medical information accessible, understandable, and actionable.',
+      techStack: ['React', 'Supabase', 'Flowise', 'Google Generative AI', 'Framer Motion'],
+      image: '',
+      images: [],
+      isGroupProject: true,
+      priority: 1,
+      githubUrl: 'https://github.com/MrTrotid/meroaushadhi',
+    },
+  ].sort((a, b) => a.priority - b.priority);
+
+  const itemsPerView = containerWidth >= minCardWidth * 2 + gap ? 2 : 1;
+  const cardWidth = containerWidth ? (containerWidth - gap * (itemsPerView - 1)) / itemsPerView : 0;
+  const maxIndex = Math.max(projects.length - itemsPerView, 0);
 
   const nextProject = () => {
-    setCurrentIndex((prev) => (prev + 1) % projects.length);
+    setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
   };
 
   const prevProject = () => {
-    setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
+    setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
   };
 
   useEffect(() => {
-    if (containerRef.current) {
-      setContainerWidth(containerRef.current.offsetWidth);
+    const element = containerRef.current;
+
+    if (!element) {
+      return;
     }
+
+    const observer = new ResizeObserver(() => {
+      setContainerWidth(element.offsetWidth);
+    });
+
+    observer.observe(element);
+    setContainerWidth(element.offsetWidth);
+
+    return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    setCurrentIndex((prev) => Math.min(prev, maxIndex));
+  }, [maxIndex]);
+
   return (
-    <section id="project" className="flex items-center justify-center py-32">
-      <div className="max-w-7xl mx-auto px-6 w-full">
+    <section id="project" className="flex items-center justify-center py-32 overflow-hidden">
+      <div className="w-full px-6" style={{ maxWidth: '80rem', margin: '0 auto' }}>
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -79,10 +128,10 @@ export default function ProjectsSection() {
             $ ls -la my_projects/
           </p>
 
-          <div className="relative">
+          <div className="relative px-12 md:px-0">
             <button
               onClick={prevProject}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 z-10 w-10 h-10 flex items-center justify-center border border-[var(--neon-green)] bg-[#1a1a1a] text-[var(--neon-green)] hover:bg-[var(--neon-green)] hover:text-black transition-all duration-300 font-mono text-xl shadow-[0_0_10px_rgba(57,255,20,0.3)]"
+              className="absolute left-0 md:left-0 top-1/2 -translate-y-1/2 md:-translate-x-12 z-10 w-10 h-10 flex items-center justify-center border border-[var(--neon-green)] bg-[#1a1a1a] text-[var(--neon-green)] hover:bg-[var(--neon-green)] hover:text-black transition-all duration-300 font-mono text-xl shadow-[0_0_10px_rgba(57,255,20,0.3)]"
               aria-label="Previous project"
             >
               &lt;
@@ -90,23 +139,28 @@ export default function ProjectsSection() {
 
             <button
               onClick={nextProject}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 z-10 w-10 h-10 flex items-center justify-center border border-[var(--neon-green)] bg-[#1a1a1a] text-[var(--neon-green)] hover:bg-[var(--neon-green)] hover:text-black transition-all duration-300 font-mono text-xl shadow-[0_0_10px_rgba(57,255,20,0.3)]"
+              className="absolute right-0 md:right-0 top-1/2 -translate-y-1/2 md:translate-x-12 z-10 w-10 h-10 flex items-center justify-center border border-[var(--neon-green)] bg-[#1a1a1a] text-[var(--neon-green)] hover:bg-[var(--neon-green)] hover:text-black transition-all duration-300 font-mono text-xl shadow-[0_0_10px_rgba(57,255,20,0.3)]"
               aria-label="Next project"
             >
               &gt;
             </button>
 
-            <div ref={containerRef} className="relative w-full overflow-hidden">
+            <div ref={containerRef} className="relative w-full overflow-hidden mx-auto" style={{ maxWidth: 'calc(100% - 5rem)' }}>
               <motion.div
                 className="flex gap-6"
-                animate={{ x: containerWidth ? -currentIndex * (containerWidth + 24) : 0 }}
+                animate={{ x: cardWidth ? -currentIndex * (cardWidth + gap) : 0 }}
                 transition={{ duration: 0.6, ease: 'easeInOut' }}
               >
                 {projects.map((project) => (
-                  <div key={project.title} className="w-full flex-shrink-0">
+                  <div
+                    key={project.title}
+                    className="flex-shrink-0 min-w-0"
+                    style={{ width: cardWidth ? `${cardWidth}px` : '100%' }}
+                  >
                     <Card className="bg-[var(--card-bg)] border-[var(--border-color)] hover:border-[var(--neon-green)] transition-all duration-300 overflow-hidden h-full flex flex-col">
-                      <CardHeader className="pb-0">
-                        <div className="relative w-full h-48 mb-4 -mx-6 -mt-6 rounded-t-lg overflow-hidden bg-gray-900">
+                      <CardHeader className="p-0">
+                        {/* Recommended image dimensions: 800x400px (2:1 aspect ratio) */}
+                        <div className="relative w-full h-48 overflow-hidden bg-gray-900">
                           {project.image && (
                             <Image
                               src={project.image}
@@ -119,7 +173,7 @@ export default function ProjectsSection() {
                             />
                           )}
                         </div>
-                        <div className="flex items-start justify-between gap-2">
+                        <div className="flex items-start justify-between gap-2 p-6 pb-0">
                           <div className="flex-1">
                             <CardTitle className="text-2xl font-mono text-white">{project.title}</CardTitle>
                             <CardDescription className="font-mono text-gray-400">{project.subtitle}</CardDescription>
@@ -131,7 +185,7 @@ export default function ProjectsSection() {
                           )}
                         </div>
                       </CardHeader>
-                      <CardContent className="pt-4 flex-grow">
+                      <CardContent className="pt-4 flex-grow px-6">
                         <p className="text-gray-300 mb-4 font-mono text-sm line-clamp-3">{project.description}</p>
                         <div className="flex flex-wrap gap-2 mb-4">
                           {project.techStack.map((tech) => (
@@ -144,7 +198,7 @@ export default function ProjectsSection() {
                           ))}
                         </div>
                       </CardContent>
-                      <CardFooter className="flex gap-4 mt-auto">
+                      <CardFooter className="flex gap-4 mt-auto px-6 pb-6">
                         <Button
                           onClick={() => setSelectedProject(project)}
                           variant="outline"
@@ -169,7 +223,7 @@ export default function ProjectsSection() {
             </div>
 
             <div className="flex justify-center gap-2 mt-8">
-              {projects.map((_, idx) => (
+              {Array.from({ length: maxIndex + 1 }).map((_, idx) => (
                 <button
                   key={idx}
                   onClick={() => setCurrentIndex(idx)}
@@ -239,6 +293,7 @@ export default function ProjectsSection() {
                   {selectedProject.images && selectedProject.images.length > 0 && (
                     <div>
                       <h4 className="text-[var(--neon-green)] font-mono text-sm mb-3">$ gallery --show</h4>
+                      {/* Recommended gallery image dimensions: 1200x800px (3:2 aspect ratio) or 1920x1080px (16:9 aspect ratio) */}
                       <div className="space-y-4">
                         {selectedProject.images.map((img: string, idx: number) => (
                           <div

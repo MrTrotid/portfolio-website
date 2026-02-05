@@ -42,8 +42,8 @@ export default function ContactSection() {
   ];
 
   return (
-    <section id="contact" className="flex items-center justify-center py-32">
-      <div className="max-w-4xl mx-auto px-6 w-full">
+    <section id="contact" className="flex items-center justify-center py-32 overflow-hidden">
+      <div className="w-full px-6" style={{ maxWidth: '56rem', margin: '0 auto' }}>
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}

@@ -7,8 +7,8 @@ export default function AboutSection() {
   const skillCategories = profile.skills;
 
   return (
-    <section id="about" className="flex items-center justify-center py-32">
-      <div className="max-w-7xl mx-auto px-6 w-full">
+    <section id="about" className="flex items-center justify-center py-32 overflow-hidden">
+      <div className="w-full px-6" style={{ maxWidth: '80rem', margin: '0 auto' }}>
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -23,13 +23,14 @@ export default function AboutSection() {
           </p>
 
           {/* About Content */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+          <div className="flex flex-wrap gap-12 mb-16 justify-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: false }}
-              className="border border-[var(--border-color)] bg-[var(--card-bg)] p-8 rounded-lg hover:border-[var(--neon-green)] transition-all duration-300"
+              className="border border-[var(--border-color)] bg-[var(--card-bg)] p-8 rounded-lg hover:border-[var(--neon-green)] transition-all duration-300 flex-1"
+              style={{ minWidth: '300px', maxWidth: '600px' }}
             >
               <h3 className="text-2xl font-mono text-[var(--neon-green)] mb-4">Who I am</h3>
               <p className="text-gray-300 font-mono text-sm leading-relaxed">
@@ -42,7 +43,8 @@ export default function AboutSection() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: false }}
-              className="border border-[var(--border-color)] bg-[var(--card-bg)] p-8 rounded-lg hover:border-[var(--neon-green)] transition-all duration-300"
+              className="border border-[var(--border-color)] bg-[var(--card-bg)] p-8 rounded-lg hover:border-[var(--neon-green)] transition-all duration-300 flex-1"
+              style={{ minWidth: '300px', maxWidth: '600px' }}
             >
               <h3 className="text-2xl font-mono text-[var(--neon-green)] mb-4">What I do</h3>
               <ul className="space-y-3 font-mono text-sm text-gray-300">
@@ -73,7 +75,7 @@ export default function AboutSection() {
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            <div className="flex flex-wrap gap-6 md:gap-8 justify-center">
               {skillCategories.map((category, idx) => (
                 <motion.div
                   key={category.category}
@@ -81,7 +83,8 @@ export default function AboutSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
                   viewport={{ once: false }}
-                  className="border border-[var(--border-color)] bg-[#0a0a0a] p-6 rounded-lg hover:border-[var(--neon-green)] transition-all duration-300"
+                  className="border border-[var(--border-color)] bg-[#0a0a0a] p-6 rounded-lg hover:border-[var(--neon-green)] transition-all duration-300 flex-1"
+                  style={{ minWidth: '240px', maxWidth: '360px' }}
                 >
                   <h4 className="text-lg font-bold font-mono mb-4 text-[var(--neon-green)] text-center">
                     {category.category}
