@@ -80,19 +80,13 @@ export default function NotFound() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9, duration: 0.6 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
+          className="flex justify-center"
         >
           <Link
             href="/"
             className="px-6 py-3 border-2 border-[#39ff14] text-[#39ff14] font-mono text-sm hover:bg-[#39ff14] hover:text-black transition-colors duration-300 rounded"
           >
             {'> Return Home'}
-          </Link>
-          <Link
-            href="/projects"
-            className="px-6 py-3 border-2 border-gray-500 text-gray-400 font-mono text-sm hover:border-[#39ff14] hover:text-[#39ff14] transition-colors duration-300 rounded"
-          >
-            {'> View Projects'}
           </Link>
         </motion.div>
 

@@ -71,12 +71,12 @@ export default function Navigation({ activeSection, onNavigate }: NavigationProp
   }, [onNavigate, getSectionRoute]);
 
   return (
-    <header className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4">
-      <nav className="bg-black/80 backdrop-blur-md border border-[var(--neon-green)] rounded-full px-6 py-3 shadow-lg shadow-[var(--neon-green)]/20 max-w-fit">
-        <div className="flex items-center gap-3 md:gap-6 nav-container relative" style={{ minWidth: 'fit-content' }}>
-          {/* Sliding Active Indicator */}
+    <header className="fixed top-3 sm:top-6 left-0 right-0 z-50 flex justify-center px-2 sm:px-4">
+      <nav className="bg-black/80 backdrop-blur-md border border-[var(--neon-green)] rounded-full px-3 sm:px-6 py-2 sm:py-3 shadow-lg shadow-[var(--neon-green)]/20 max-w-fit">
+        <div className="flex items-center gap-1.5 sm:gap-3 md:gap-6 nav-container relative" style={{ minWidth: 'fit-content' }}>
+          {/* Sliding Active Indicator - Hidden on very small screens */}
           <motion.div
-            className="absolute top-1/2 -translate-y-1/2 h-10 bg-[var(--neon-green)] rounded-full"
+            className="hidden sm:block absolute top-1/2 -translate-y-1/2 h-10 bg-[var(--neon-green)] rounded-full"
             initial={false}
             animate={{
               left: indicatorStyle.left,
@@ -90,61 +90,63 @@ export default function Navigation({ activeSection, onNavigate }: NavigationProp
           />
           
           {/* Left Navigation Items (About, Project) */}
-          <div className="flex flex-1 items-center justify-end gap-2 md:gap-3">
+          <div className="flex flex-1 items-center justify-end gap-1 sm:gap-2 md:gap-3">
             {sections.slice(0, 2).map((section, index, arr) => (
-              <div key={section} className="flex items-center gap-2 md:gap-3">
+              <div key={section} className="flex items-center gap-1 sm:gap-2 md:gap-3">
                 <button
                   data-section={section}
                   onClick={() => handleNavigate(section)}
-                  className={`px-3 md:px-4 py-1 rounded-full transition-all duration-300 font-mono text-xs tracking-wider relative z-10 whitespace-nowrap ${
-                    activeSection === getSectionRoute(section) ? 'text-black font-bold' : 'text-white hover:text-[var(--neon-green)]'
+                  className={`px-2 sm:px-3 md:px-4 py-2 sm:py-1 rounded-full transition-all duration-300 font-mono text-[10px] sm:text-xs tracking-wider relative z-10 whitespace-nowrap min-h-[44px] sm:min-h-0 flex items-center justify-center ${
+                    activeSection === getSectionRoute(section) ? 'text-black font-bold bg-[var(--neon-green)] sm:bg-transparent' : 'text-white hover:text-[var(--neon-green)]'
                   }`}
                 >
-                  {section}
+                  <span className="hidden sm:inline">{section}</span>
+                  <span className="sm:hidden">{section === 'About me' ? 'About' : section}</span>
                 </button>
                 {index < arr.length - 1 && (
-                  <div className="w-3 h-3 rounded-full border-2 border-[var(--neon-green)] flex items-center justify-center flex-shrink-0">
+                  <div className="hidden sm:flex w-3 h-3 rounded-full border-2 border-[var(--neon-green)] items-center justify-center flex-shrink-0">
                     <div className="w-1.5 h-1.5 rounded-full bg-[var(--neon-green)]"></div>
                   </div>
                 )}
               </div>
             ))}
             {/* Dot separator before logo */}
-            <div className="w-3 h-3 rounded-full border-2 border-[var(--neon-green)] flex items-center justify-center flex-shrink-0">
+            <div className="hidden sm:flex w-3 h-3 rounded-full border-2 border-[var(--neon-green)] items-center justify-center flex-shrink-0">
               <div className="w-1.5 h-1.5 rounded-full bg-[var(--neon-green)]"></div>
             </div>
           </div>
 
           {/* Logo in Center */}
-          <div className="flex-shrink-0 flex items-center justify-center relative z-10">
+          <div className="flex-shrink-0 flex items-center justify-center relative z-10 mx-0.5 sm:mx-0">
             <Image
               src="/logo.png"
               alt="Logo"
               width={40}
               height={40}
-              className="w-8 h-8 md:w-10 md:h-10"
+              className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10"
             />
           </div>
 
-          {/* Right Navigation Items (Experience, Resume) */}
-          <div className="flex flex-1 items-center justify-start gap-2 md:gap-3">
+          {/* Right Navigation Items (Experience, Contact) */}
+          <div className="flex flex-1 items-center justify-start gap-1 sm:gap-2 md:gap-3">
             {/* Dot separator after logo */}
-            <div className="w-3 h-3 rounded-full border-2 border-[var(--neon-green)] flex items-center justify-center flex-shrink-0">
+            <div className="hidden sm:flex w-3 h-3 rounded-full border-2 border-[var(--neon-green)] items-center justify-center flex-shrink-0">
               <div className="w-1.5 h-1.5 rounded-full bg-[var(--neon-green)]"></div>
             </div>
             {sections.slice(2).map((section, index, arr) => (
-              <div key={section} className="flex items-center gap-2 md:gap-3">
+              <div key={section} className="flex items-center gap-1 sm:gap-2 md:gap-3">
                 <button
                   data-section={section}
                   onClick={() => handleNavigate(section)}
-                  className={`px-3 md:px-4 py-1 rounded-full transition-all duration-300 font-mono text-xs tracking-wider relative z-10 whitespace-nowrap ${
-                    activeSection === getSectionRoute(section) ? 'text-black font-bold' : 'text-white hover:text-[var(--neon-green)]'
+                  className={`px-2 sm:px-3 md:px-4 py-2 sm:py-1 rounded-full transition-all duration-300 font-mono text-[10px] sm:text-xs tracking-wider relative z-10 whitespace-nowrap min-h-[44px] sm:min-h-0 flex items-center justify-center ${
+                    activeSection === getSectionRoute(section) ? 'text-black font-bold bg-[var(--neon-green)] sm:bg-transparent' : 'text-white hover:text-[var(--neon-green)]'
                   }`}
                 >
-                  {section}
+                  <span className="hidden sm:inline">{section}</span>
+                  <span className="sm:hidden">{section === 'Experience' ? 'Exp' : section}</span>
                 </button>
                 {index < arr.length - 1 && (
-                  <div className="w-3 h-3 rounded-full border-2 border-[var(--neon-green)] flex items-center justify-center flex-shrink-0">
+                  <div className="hidden sm:flex w-3 h-3 rounded-full border-2 border-[var(--neon-green)] items-center justify-center flex-shrink-0">
                     <div className="w-1.5 h-1.5 rounded-full bg-[var(--neon-green)]"></div>
                   </div>
                 )}
@@ -159,7 +161,7 @@ export default function Navigation({ activeSection, onNavigate }: NavigationProp
         <button
           onClick={scrollToTop}
           aria-label="Back to top"
-          className="fixed bottom-4 right-4 bg-black/85 border-2 border-[var(--neon-green)] text-[var(--neon-green)] rounded-none px-3 py-2 font-mono text-sm shadow-[0_8px_18px_-6px_rgba(0,255,128,0.5)] hover:bg-[var(--neon-green)] hover:text-black transition-all duration-200 z-50"
+          className="fixed bottom-4 right-4 bg-black/85 border-2 border-[var(--neon-green)] text-[var(--neon-green)] rounded-none px-4 py-3 font-mono text-sm shadow-[0_8px_18px_-6px_rgba(0,255,128,0.5)] hover:bg-[var(--neon-green)] hover:text-black transition-all duration-200 z-50 min-w-[48px] min-h-[48px] flex items-center justify-center"
         >
           ^
         </button>

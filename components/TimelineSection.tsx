@@ -207,22 +207,26 @@ export default function TimelineSection() {
                             event.type === 'join'
                               ? 'rgba(57, 255, 20, 0.04)'
                               : 'rgba(239, 68, 68, 0.04)',
+                          minWidth: 0,
                         }}
                       >
                         {/* Card Header - Terminal Style */}
                         <div className="mb-3 pb-2 border-b border-gray-700" />
 
                         {/* Card Content */}
-                        <div className="space-y-2 font-mono">
+                        <div className="space-y-2 font-mono w-full">
                           {/* Title with Icon */}
-                          <div className="flex items-start gap-2 min-w-0">
+                          <div className="flex flex-col sm:flex-row sm:items-start gap-2 w-full">
                             <span
                               className="flex-shrink-0 mt-0.5 font-bold text-sm"
                               style={{ color: colorClass }}
                             >
                               {event.type === 'join' ? '▶' : '⬛'}
                             </span>
-                            <h3 className="text-sm md:text-base font-bold text-white leading-snug break-words">
+                            <h3 
+                              className="text-sm md:text-base font-bold text-white leading-snug"
+                              style={{ wordBreak: 'break-word', overflowWrap: 'break-word' }}
+                            >
                               {event.title}
                             </h3>
                           </div>

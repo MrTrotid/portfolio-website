@@ -27,41 +27,40 @@ export default function HeroSection({ onContactClick }: HeroSectionProps) {
   };
 
   return (
-    <section id="hero" className="relative py-24 pt-40 min-h-screen bg-[#0a0a0a] overflow-hidden">
-      <div className="w-full px-6" style={{ maxWidth: '80rem', margin: '0 auto' }}>
-        <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-16 min-h-[80vh]">
+    <section id="hero" className="relative py-16 sm:py-24 pt-28 sm:pt-40 min-h-screen bg-[#0a0a0a] overflow-hidden">
+      <div className="w-full px-4 sm:px-6" style={{ maxWidth: '80rem', margin: '0 auto' }}>
+        <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-8 sm:gap-16 min-h-[80vh]">
           {/* Left Column - Text Content */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="space-y-6 flex-shrink-0"
+            className="space-y-4 sm:space-y-6 flex-shrink-0"
             style={{ maxWidth: '42rem' }}
           >
-            <h1 className="text-5xl md:text-6xl font-bold font-mono leading-tight">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold font-mono leading-tight">
               Baman is a{' '}
               <span className="text-[var(--neon-green)]">student</span> and
               <br />
-              <span className="whitespace-nowrap">
+              <span className="whitespace-nowrap text-2xl sm:text-5xl md:text-6xl">
                 <span className="text-[var(--neon-green)]">cyber-security</span>{' '}
                 <span className="text-white">enthusiast</span>
               </span>
             </h1>
 
-            <p className="text-lg md:text-xl text-gray-400 font-mono">
+            <p className="text-base sm:text-lg md:text-xl text-gray-400 font-mono">
               He (sometimes) crafts responsive websites for fun
             </p>
           </motion.div>
 
           {/* Right Column - Mini Game */}
-          <div className="relative flex flex-col items-center flex-shrink-0">
+          <div className="relative flex flex-col items-center flex-shrink-0 w-full lg:w-auto">
             {/* Mini Game Area - Tic Tac Toe */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.8 }}
-              className="flex-shrink-0"
-              style={{ width: '16rem', height: '16rem' }}
+              className="flex-shrink-0 w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-64 lg:h-64"
             >
             <div className="relative w-full h-full">
               <motion.div
@@ -84,8 +83,9 @@ export default function HeroSection({ onContactClick }: HeroSectionProps) {
                   initial={{ rotate: 0 }}
                   animate={{ rotate: showGame ? 18 : 0, y: showGame ? 10 : 0 }}
                   transition={{ duration: 0.55, ease: 'easeInOut' }}
-                  className="absolute -bottom-1 -right-1 w-14 h-14 bg-[var(--neon-green)] text-black font-bold text-[10px] flex items-center justify-center rounded-tl-lg shadow-lg shadow-[var(--neon-green)]/30"
+                  className="absolute -bottom-1 -right-1 w-12 h-12 sm:w-14 sm:h-14 bg-[var(--neon-green)] text-black font-bold text-[10px] flex items-center justify-center rounded-tl-lg shadow-lg shadow-[var(--neon-green)]/30 touch-manipulation"
                   style={{ transformOrigin: 'bottom right' }}
+                  aria-label="Reveal game"
                 >
                   <span className="sr-only">^^^</span>
                 </motion.button>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { metadataBase, siteDescription, siteKeywords, siteName, siteUrl } from "../lib/site";
+import { author, metadataBase, siteDescription, siteKeywords, siteName, siteUrl } from "../lib/site";
+import StructuredData from "../components/StructuredData";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -15,30 +16,50 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase,
-  title: siteName,
+  title: {
+    default: siteName,
+    template: `%s | ${siteName}`,
+  },
   description: siteDescription,
   keywords: siteKeywords,
-  authors: [{ name: "Baman Prasad Guragain", url: siteUrl }],
-  creator: "Baman Prasad Guragain",
-  publisher: "Baman Prasad Guragain",
+  authors: [{ name: author.name, url: siteUrl }],
+  creator: author.name,
+  publisher: author.name,
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   alternates: {
     canonical: siteUrl,
   },
   openGraph: {
     type: "website",
+    locale: "en_US",
     url: siteUrl,
     siteName: siteName,
     title: siteName,
     description: siteDescription,
+    images: [
+      {
+        url: `${siteUrl}/og-image.png`,
+        width: 1200,
+        height: 630,
+        alt: siteName,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: siteName,
     description: siteDescription,
+    creator: "@MrTrotid",
+    images: [`${siteUrl}/og-image.png`],
   },
   robots: {
     index: true,
     follow: true,
+    nocache: false,
     googleBot: {
       index: true,
       follow: true,
@@ -48,7 +69,13 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "logo.svg",
+    icon: "/logo.svg",
+    shortcut: "/logo.svg",
+    apple: "/logo.svg",
+  },
+  manifest: "/site.webmanifest",
+  verification: {
+    google: "google-site-verification-code", // Add your Google Search Console verification code here
   },
 };
 
@@ -59,6 +86,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <StructuredData />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
+        <meta name="theme-color" content="#0a0a0a" />
+        <meta name="color-scheme" content="dark" />
+        <link rel="canonical" href={siteUrl} />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#0a0a0a] min-h-screen flex flex-col items-center`}
       >

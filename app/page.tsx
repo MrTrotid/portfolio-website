@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import HeroSection from '@/components/HeroSection';
-import TestimonialCarousel from '@/components/TestimonialCarousel';
 import AboutSection from '@/components/AboutSection';
 import ProjectsSection from '@/components/ProjectsSection';
 import ExperienceSection from '@/components/ExperienceSection';
@@ -82,7 +81,8 @@ export default function Home() {
         <AboutSection />
         <ProjectsSection />
         <ExperienceSection />
-        <TestimonialCarousel />
+        {/* Testimonial section hidden for now */}
+        {/* <TestimonialCarousel /> */}
         <ContactSection />
       </main>
 

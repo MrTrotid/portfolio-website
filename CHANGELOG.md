@@ -2,6 +2,196 @@
 
 All notable changes to this portfolio website project.
 
+## [1.2.1] - 2026-02-05 (Latest)
+
+### 🔐 Security & Documentation
+- **New Security Documentation**
+  - Created `docs/SECURITY.md` with comprehensive security guidelines
+  - Documented all security headers (HSTS, CSP, X-Frame-Options, etc.)
+  - Added HSTS preload configuration guidance
+  - Included vulnerability reporting procedures
+  - Provided security compliance checklist (OWASP, NIST, CWE)
+
+- **New Indexing Guide**
+  - Created `docs/INDEXING_GUIDE.md` with complete search engine setup
+  - Step-by-step Google Search Console verification (DNS and HTML tag methods)
+  - Sitemap configuration and customization
+  - Robots.txt detailed rules explanation
+  - Structured data (schema markup) documentation with examples
+  - Meta tags optimization guide
+  - Testing and validation tools reference
+  - Performance monitoring metrics and targets
+
+- **New Deployment Guide**
+  - Created `docs/DEPLOYMENT.md` with platform-specific instructions
+  - Vercel deployment (recommended, easiest)
+  - Netlify deployment alternative
+  - Self-hosted Linux server setup with PM2, Nginx, and Let's Encrypt
+  - Pre-deployment security checklist
+  - SEO & indexing post-deployment steps
+  - Monitoring and maintenance procedures
+  - Continuous deployment (GitHub Actions) setup
+  - Troubleshooting common deployment issues
+
+- **Updated Documentation**
+  - Enhanced `NEXT_STEPS.md` with comprehensive deployment checklist
+  - Added deployment platform comparison
+  - Included post-deployment monitoring schedule
+  - Updated README.md with complete documentation hierarchy
+  - Organized documentation by category (Getting Started, Customization, SEO, Security)
+
+### 🎨 UI Text Wrapping Fixes
+- **Fixed Text Truncation in Projects Section**
+  - Removed `truncate` class from project card titles
+  - Added `minWidth: 0` to flex containers for proper shrinking
+  - Applied `wordBreak: 'break-word'` + `overflowWrap: 'break-word'` CSS
+  - Fixed modal title text wrapping
+  - Fixed modal description text wrapping
+  - Project titles now wrap properly on mobile without being cut off
+
+- **Fixed Text Truncation in Experience Section (Final Pass)**
+  - Added `minWidth: 0` to all flex containers and child elements
+  - Applied `wordBreak` CSS to role title, company, and description
+  - Fixed achievement list text wrapping
+  - Added `minWidth: 0` to achievement items and description paragraph
+  - Ensured bullet points don't prevent text wrapping with `flex-shrink-0`
+  - Applied comprehensive word-break properties across all experience content
+  - Fixed resume section header and description text wrapping
+
+### ✅ Testing & Verification
+- All pages compile without TypeScript errors
+- Production builds complete successfully (no warnings)
+- Text wrapping verified across mobile and desktop breakpoints
+- Responsive layout tested on various screen sizes
+- Component re-renders stable with new flex constraints
+
+## [1.2.0] - 2026-02-05
+
+### 🔍 SEO Enhancements
+- **Structured Data (JSON-LD)**
+  - Added Person schema with professional information and social links
+  - Added Website schema with search functionality
+  - Added ProfilePage schema with metadata
+  - Improves rich search results and knowledge panel eligibility
+
+- **Enhanced Meta Tags**
+  - Title templates for dynamic page titles
+  - Comprehensive Open Graph tags for social media sharing
+  - Twitter Card optimization with large image support
+  - Format detection controls
+  - Google Search Console verification placeholder
+  - Proper canonical URLs
+
+- **Sitemap Improvements**
+  - Added section anchors (#about, #project, #experience, #resume, #contact)
+  - Better priority and change frequency configuration
+  - Proper lastModified timestamps
+
+- **Robots.txt Optimization**
+  - Specific rules for Googlebot and Googlebot-Image
+  - Crawl delay configuration
+  - Disallow /api/ directory
+
+- **Keywords & Metadata**
+  - Expanded keyword list (20+ relevant keywords)
+  - Author information with social links
+  - Improved site description for better search snippet
+
+### 📱 Mobile Optimizations
+- **Touch-Friendly Interactions**
+  - Minimum 44x44px touch targets on all interactive elements
+  - Added `touch-manipulation` CSS for better responsiveness
+  - Improved tap highlight colors
+  - Better button spacing and sizing
+
+- **Navigation Improvements**
+  - Compact layout on mobile with abbreviated text ("About" instead of "About me")
+  - Active state shows background color on mobile
+  - Responsive logo sizing (24px → 40px)
+  - Larger back-to-top button (48x48px minimum)
+
+- **Hero Section Mobile**
+  - Responsive text sizing (3xl → 6xl)
+  - Game widget scales appropriately
+  - Better padding and spacing on small screens
+  - Touch-optimized reveal button
+
+- **Projects Section Mobile**
+  - Swipe gestures for navigation (drag to change projects)
+  - Ultra-compact navigation indicators optimized for mobile:
+    - Active: Micro bar (8x2px mobile, 32x8px desktop) with neon green glow
+    - Inactive: Micro dots (2x2px mobile, 8x8px desktop) in gray
+    - Minimal 4px spacing for subtle, clean appearance
+  - **Fixed UI breaking on project switch:**
+    - Responsive gap spacing (16px mobile, 24px desktop)
+    - Improved cardWidth calculation with proper floor() rounding
+    - Better animation x-position calculation to prevent layout shifts
+    - Proper style handling for motion.div width computation
+    - Added explicit flex display property for stable rendering
+  - Arrow buttons hidden on mobile (< 640px) - swipe gestures and dots for navigation
+  - Unified card design across mobile and desktop for consistency:
+    - Smaller images (128px mobile → 160px sm → 192px desktop)
+    - Responsive titles (16px → 18px → 24px)
+    - Hidden subtitle on mobile screens (visible sm+)
+    - Compact padding (12px mobile → 16px sm → 24px desktop)
+    - Line-clamp-2 descriptions on mobile (vs line-clamp-3 desktop)
+    - Smaller tech badges (10px text mobile → 12px desktop)
+    - Vertically stacked buttons on mobile (44px height)
+  - Arrow navigation visible on desktop (≥ 640px)
+  - Mobile-optimized modal with stacked buttons
+  - Responsive gallery images (192px → 256px)
+
+- **Experience Section Mobile**
+  - Vertically stacked toggle buttons on mobile (44x44px each)
+  - Abbreviated button text ("$ professional" vs "$ my_professional_journey")
+  - Responsive card layouts with proper spacing
+  - Touch-optimized experience cards
+
+- **Contact Section Mobile**
+  - Flexible link layout (stacks on mobile)
+  - Truncated text for long URLs
+  - Minimum 44px touch targets
+  - Responsive terminal header and content
+  - Abbreviated footer text on mobile
+
+- **Global Mobile Enhancements**
+  - iOS smooth scrolling (`-webkit-overflow-scrolling: touch`)
+  - Prevent text size adjustment on orientation change
+  - Better tap highlight colors
+  - Prevent horizontal scroll bounce
+  - Image drag prevention
+  - 16px font size on inputs (prevents iOS zoom)
+
+### 📚 New Documentation
+- **SEO_GUIDE.md**
+  - Complete SEO optimization guide
+  - Google Search Console setup instructions
+  - Sitemap submission guide
+  - Performance monitoring tips
+  - Open Graph image creation guide
+
+- **MOBILE_GUIDE.md**
+  - Mobile optimization best practices
+  - Touch target guidelines
+  - Responsive design patterns
+  - Testing procedures for mobile devices
+  - Platform-specific considerations (iOS/Android)
+
+### 🐛 Bug Fixes
+- Fixed middleware deprecation warning (migrated to proxy.ts)
+- Improved responsive text sizing across all sections
+- Fixed modal overflow issues on small screens
+- Corrected touch target sizes throughout the site
+
+### 🔧 Technical Improvements
+- Migrated from middleware.ts to proxy.ts (Next.js 16 convention)
+- Added viewport meta tag with proper mobile settings
+- Improved CSS for iOS and Android compatibility
+- Better font rendering and smoothing
+- Optimized overflow behavior
+
+---
+
 ## [1.1.0] - 2026-02-05
 
 ### 🎨 UI/UX Improvements

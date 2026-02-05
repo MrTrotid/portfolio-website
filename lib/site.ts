@@ -15,15 +15,39 @@ function resolveSiteUrl() {
 
 export const siteUrl = resolveSiteUrl();
 export const siteHost = new URL(siteUrl).host;
-export const siteName = "Portfolio - MrTrotid";
-export const siteDescription = "Personal portfolio website - Student & Cybersecurity Enthusiast";
+export const siteName = "Portfolio | Baman Prasad Guragain | Cybersecurity & Developer";
+export const siteDescription = "Cybersecurity enthusiast & full-stack developer. Explore projects in web dev, IoT & security tools.";
 export const siteKeywords = [
-  "portfolio",
+  "Baman Prasad Guragain",
+  "MrTrotid",
   "cybersecurity",
-  "developer",
-  "next.js",
+  "full stack developer",
+  "portfolio",
+  "web developer",
+  "IoT developer",
+  "next.js developer",
+  "react developer",
+  "typescript developer",
   "tailwind css",
   "security enthusiast",
+  "Nepal developer",
+  "software engineer",
+  "frontend developer",
+  "backend developer",
+  "student portfolio",
+  "tech blog",
+  "coding projects",
+  "GitHub developer",
 ];
+
+export const author = {
+  name: "Baman Prasad Guragain",
+  email: "contact@bamanguragain.com.np",
+  github: "https://github.com/MrTrotid",
+  linkedin: "https://www.linkedin.com/in/mrtrotid/",
+  youtube: "https://www.youtube.com/@MrTrotid",
+  instagram: "https://www.instagram.com/mrtrotid/",
+};
+
 export const metadataBase = new URL(`${siteUrl}/`);
-export const canonicalRoutes = ["/", "/resume-subdomain"];
+export const canonicalRoutes = ["/", "/resume-subdomain", "/timeline"];
