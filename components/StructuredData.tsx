@@ -88,21 +88,28 @@ export function generateStructuredData() {
  * StructuredData Component
  * Injects JSON-LD structured data into the page for better SEO
  */
-export default function StructuredData() {
+type StructuredDataProps = {
+  nonce?: string | null;
+};
+
+export default function StructuredData({ nonce }: StructuredDataProps) {
   const { personSchema, websiteSchema, profilePageSchema } = generateStructuredData();
 
   return (
     <>
       <script
         type="application/ld+json"
+        nonce={nonce ?? undefined}
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
       />
       <script
         type="application/ld+json"
+        nonce={nonce ?? undefined}
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
       />
       <script
         type="application/ld+json"
+        nonce={nonce ?? undefined}
         dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageSchema) }}
       />
     </>

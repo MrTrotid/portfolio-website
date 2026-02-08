@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { Geist, Geist_Mono } from "next/font/google";
 import { author, metadataBase, siteDescription, siteKeywords, siteName, siteUrl } from "../lib/site";
 import StructuredData from "../components/StructuredData";
@@ -79,15 +80,17 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const nonce = (await headers()).get("x-nonce");
+
   return (
     <html lang="en">
       <head>
-        <StructuredData />
+        <StructuredData nonce={nonce} />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
         <meta name="theme-color" content="#0a0a0a" />
         <meta name="color-scheme" content="dark" />
