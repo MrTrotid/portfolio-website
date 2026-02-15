@@ -100,16 +100,19 @@ export default function StructuredData({ nonce }: StructuredDataProps) {
       <script
         type="application/ld+json"
         nonce={nonce ?? undefined}
+        suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
       />
       <script
         type="application/ld+json"
         nonce={nonce ?? undefined}
+        suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
       />
       <script
         type="application/ld+json"
         nonce={nonce ?? undefined}
+        suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageSchema) }}
       />
     </>

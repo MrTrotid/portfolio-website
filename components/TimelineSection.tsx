@@ -1,70 +1,84 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useRef } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 interface TimelineEntry {
   date: string;
   title: string;
   company: string;
-  type: 'join' | 'leave';
+  type: 'join' | 'leave' | 'milestone';
   logo?: string;
+  description: string;
+  isNotable?: boolean;
 }
 
 const timelineEvents: TimelineEntry[] = [
   {
     date: 'Apr 2019',
-    title: 'Joined as Patrol Leader',
+    title: 'Patrol Leader',
     company: 'Nepal Scouts',
     type: 'join',
     logo: '/logos/Nepal_scout.png',
+    description: 'Led a squad of scouts into the wilderness. Survived on instant noodles and leadership skills.',
+    isNotable: true,
   },
   {
     date: 'Apr 2021',
-    title: 'Left Patrol Leader Position',
+    title: 'Scout Veteran',
     company: 'Nepal Scouts',
     type: 'leave',
+    description: 'Hung up the scarf after 2 legendary years. The knots I tied will never be forgotten.',
   },
   {
     date: 'Jan 2024',
-    title: 'Became Executive',
+    title: 'Executive Member',
     company: 'SXC A Level Alumni Club',
     type: 'join',
     logo: '/logos/stxaviers.png',
+    description: 'Joined the alumni elite. Now I can say "back in my day" with official authority.',
+    isNotable: true,
   },
   {
     date: 'Feb 2024',
-    title: 'Joined as Event Manager & Deputy IT Manager',
+    title: 'Event Manager & Deputy IT Manager',
     company: 'Junior Jaycees Budhanilkantha',
     type: 'join',
     logo: '/logos/JCI_logo.jpeg',
+    description: 'Dual-wielding responsibilities: planning epic events while fixing the WiFi. A true Renaissance human.',
+    isNotable: true,
   },
   {
     date: 'Jul 2025',
-    title: 'Joined as IT Officer',
+    title: 'IT Officer',
     company: 'Interact Club of Matribhumi Baluwatar',
     type: 'join',
     logo: '/logos/ICMB.png',
+    description: '"Have you tried turning it off and on again?" became my professional mantra.',
   },
   {
     date: 'Aug 2025',
-    title: 'Joined as SEO Content Writer',
+    title: 'SEO Content Writer',
     company: 'Gadgetbyte Nepal',
     type: 'join',
     logo: '/logos/gadgetbyte.png',
+    description: 'Writing tech content that both Google algorithms and humans actually enjoy. A rare feat.',
+    isNotable: true,
   },
   {
     date: 'Jan 2025',
-    title: 'Left Event Manager Position',
+    title: 'Event Manager Alumnus',
     company: 'Junior Jaycees Budhanilkantha',
     type: 'leave',
+    description: 'Passed the torch. The events will never be the same (in a good way, I hope).',
   },
   {
     date: 'Dec 2025',
-    title: 'Completed SEO Writer Role',
+    title: 'SEO Writer Graduate',
     company: 'Gadgetbyte Nepal',
     type: 'leave',
+    description: 'My articles are still ranking somewhere in the depths of Google. Legacy secured.',
   },
 ];
 
@@ -72,249 +86,271 @@ const sortedEvents = [...timelineEvents].sort((a, b) => {
   return new Date(a.date).getTime() - new Date(b.date).getTime();
 });
 
+// Typing animation component
+const TypeWriter = ({ text, delay = 50, className = '' }: { text: string; delay?: number; className?: string }) => {
+  const [displayText, setDisplayText] = useState('');
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    if (currentIndex < text.length) {
+      const timeout = setTimeout(() => {
+        setDisplayText(prev => prev + text[currentIndex]);
+        setCurrentIndex(prev => prev + 1);
+      }, delay);
+      return () => clearTimeout(timeout);
+    }
+  }, [currentIndex, text, delay]);
+
+  return (
+    <span className={className}>
+      {displayText}
+      <motion.span
+        animate={{ opacity: [1, 0] }}
+        transition={{ duration: 0.5, repeat: Infinity, repeatType: 'reverse' }}
+        className="inline-block w-2 h-4 bg-[var(--neon-green)] ml-1"
+      />
+    </span>
+  );
+};
+
+// Glitch text effect
+const GlitchText = ({ text, className = '' }: { text: string; className?: string }) => {
+  return (
+    <span className={`relative inline-block ${className}`}>
+      <span className="relative z-10">{text}</span>
+      <motion.span
+        className="absolute top-0 left-0 text-cyan-400 opacity-70"
+        animate={{ x: [-1, 1, -1, 0], opacity: [0.7, 0, 0.7, 0.7] }}
+        transition={{ duration: 0.3, repeat: Infinity, repeatDelay: 2 }}
+        aria-hidden="true"
+      >
+        {text}
+      </motion.span>
+      <motion.span
+        className="absolute top-0 left-0 text-red-400 opacity-70"
+        animate={{ x: [1, -1, 1, 0], opacity: [0.7, 0, 0.7, 0.7] }}
+        transition={{ duration: 0.3, repeat: Infinity, repeatDelay: 2, delay: 0.1 }}
+        aria-hidden="true"
+      >
+        {text}
+      </motion.span>
+    </span>
+  );
+};
+
+// Status badge component
+const StatusBadge = ({ type }: { type: 'join' | 'leave' | 'milestone' }) => {
+  const config = {
+    join: { label: 'JOINED', color: '#39ff14', bg: 'rgba(57, 255, 20, 0.1)' },
+    leave: { label: 'DEPARTED', color: '#ef4444', bg: 'rgba(239, 68, 68, 0.1)' },
+    milestone: { label: 'MILESTONE', color: '#fbbf24', bg: 'rgba(251, 191, 36, 0.1)' },
+  };
+  const { label, color, bg } = config[type];
+  
+  return (
+    <motion.div
+      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-mono font-bold border"
+      style={{ borderColor: color, backgroundColor: bg, color }}
+      whileHover={{ scale: 1.05 }}
+    >
+      <motion.span
+        animate={{ opacity: [1, 0.4, 1] }}
+        transition={{ duration: 1.2, repeat: Infinity }}
+      >
+        {type === 'join' ? '++' : type === 'leave' ? '--' : '##'}
+      </motion.span>
+      {label}
+    </motion.div>
+  );
+};
+
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
       staggerChildren: 0.12,
-      delayChildren: 0.05,
+      delayChildren: 0.1,
     },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 40, scale: 0.95 },
   visible: {
     opacity: 1,
     y: 0,
+    scale: 1,
     transition: {
       duration: 0.5,
-    },
-  },
-};
-
-const dateVariants = {
-  hidden: { opacity: 0, y: -8 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.4,
-    },
-  },
-};
-
-const connectorVariants = {
-  hidden: { scaleX: 0, opacity: 0 },
-  visible: {
-    scaleX: 1,
-    opacity: 1,
-    transition: {
-      duration: 0.5,
-      delay: 0.15,
+      ease: [0.25, 0.46, 0.45, 0.94] as const,
     },
   },
 };
 
 export default function TimelineSection() {
-  const itemsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section id="timeline" className="w-full py-32 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full">
+    <section id="timeline" className="w-full py-24 relative overflow-hidden">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 w-full relative z-10">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
           viewport={{ once: true }}
-          className="text-center mb-16 md:mb-20"
+          className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold font-mono mb-3">
-            <span className="text-[var(--neon-green)]">#</span>timeline
+            <GlitchText text="git log" className="text-[var(--neon-green)]" />
           </h2>
-          <p className="text-gray-400 font-mono text-sm md:text-base">
-            $ cat my_journey.log
-          </p>
+          <div className="text-gray-400 font-mono text-sm md:text-base">
+            <span className="text-[var(--neon-green)]">$</span>{' '}
+            <TypeWriter text="cat my_journey.log --graph --oneline" delay={30} />
+          </div>
         </motion.div>
 
-        {/* Timeline Container */}
-        <div className="relative w-full">
-          {/* Main Vertical Timeline Line - Continuous and Consistent */}
-          <div
-            className="absolute top-0 bottom-0 w-px bg-[var(--neon-green)] opacity-40 pointer-events-none"
-            style={{
-              left: '50%',
-              transform: 'translateX(-50%)',
-            }}
-            aria-hidden="true"
-          />
+        {/* Timeline Events */}
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, margin: '0px 0px -100px 0px' }}
+        >
+          {sortedEvents.map((event, index) => {
+            const isHovered = hoveredIndex === index;
+            const isJoin = event.type === 'join';
+            const isMilestone = event.isNotable;
+            const accentColor = isJoin ? '#39ff14' : event.type === 'milestone' ? '#fbbf24' : '#ef4444';
 
-          {/* Timeline Events */}
-          <motion.div
-            className="space-y-0"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false, margin: '0px 0px -100px 0px' }}
-          >
-            {sortedEvents.map((event, index) => {
-              const isLeft = index % 2 === 0;
-              const colorClass = event.type === 'join' ? 'var(--neon-green)' : '#ef4444';
-
-              return (
+            return (
+              <motion.div
+                key={`${event.date}-${index}`}
+                className="relative"
+                variants={itemVariants}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+              >
                 <motion.div
-                  key={`${event.date}-${index}`}
-                  ref={(el) => {
-                    if (el) itemsRef.current[index] = el;
+                  className="relative w-full h-full border rounded-xl overflow-hidden transition-all duration-300"
+                  style={{
+                    borderColor: isHovered ? accentColor : 'var(--border-color)',
+                    borderWidth: isHovered ? '2px' : '1px',
+                    backgroundColor: 'var(--card-bg)',
+                    boxShadow: isMilestone ? `0 0 20px ${accentColor}15, inset 0 0 0 1px ${accentColor}20` : undefined,
                   }}
-                  className="relative w-full"
-                  style={{ minHeight: 'auto' }}
+                  whileHover={{
+                    scale: 1.02,
+                    boxShadow: `0 0 25px ${accentColor}25`,
+                  }}
                 >
-                  {/* Event Container - Consistent Height */}
-                  <div
-                    className={`flex items-stretch ${
-                      isLeft ? 'justify-start' : 'justify-end'
-                    }`}
-                    style={{
-                      paddingBottom: '3.5rem',
-                    }}
-                  >
-                    {/* Content Wrapper */}
-                    <div className="w-full md:w-5/12 flex flex-col">
-                      {/* Date Label - Positioned Above Card */}
-                      <motion.div
-                        variants={dateVariants}
-                        className="mb-2"
-                      >
-                        <span
-                          className="text-xs md:text-sm font-mono font-semibold tracking-widest"
-                          style={{ color: colorClass }}
+                  {/* Notable badge for milestones */}
+                  {isMilestone && (
+                    <motion.div
+                      className="absolute -top-px left-4 px-2 py-0.5 text-[9px] font-mono font-bold rounded-b"
+                      style={{ backgroundColor: accentColor, color: '#000' }}
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.3 }}
+                    >
+                      NOTABLE
+                    </motion.div>
+                  )}
+
+                  {/* Card Content */}
+                  <div className={`p-4 md:p-5 flex flex-col h-full ${isMilestone ? 'pt-6' : ''}`}>
+                    {/* Header: Date + Status */}
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center gap-3">
+                        {/* Date */}
+                        <motion.span
+                          className="text-lg md:text-xl font-mono font-bold"
+                          style={{ color: accentColor }}
+                          whileHover={{ scale: 1.05 }}
                         >
                           {event.date}
-                        </span>
-                      </motion.div>
+                        </motion.span>
+                      </div>
+                      <StatusBadge type={event.type} />
+                    </div>
 
-                      {/* Event Card */}
-                      <motion.div
-                        variants={itemVariants}
-                        className={`w-full border rounded-md p-4 md:p-5 transition-all duration-300 hover:shadow-lg`}
-                        style={{
-                          borderColor: colorClass,
-                          borderWidth: '2px',
-                          backgroundColor:
-                            event.type === 'join'
-                              ? 'rgba(57, 255, 20, 0.04)'
-                              : 'rgba(239, 68, 68, 0.04)',
-                          minWidth: 0,
-                        }}
-                      >
-                        {/* Card Header - Terminal Style */}
-                        <div className="mb-3 pb-2 border-b border-gray-700" />
+                    {/* Title */}
+                    <h3 className="text-lg md:text-xl font-bold text-white mb-2 leading-tight">
+                      {event.title}
+                    </h3>
 
-                        {/* Card Content */}
-                        <div className="space-y-2 font-mono w-full">
-                          {/* Title with Icon */}
-                          <div className="flex flex-col sm:flex-row sm:items-start gap-2 w-full">
-                            <span
-                              className="flex-shrink-0 mt-0.5 font-bold text-sm"
-                              style={{ color: colorClass }}
-                            >
-                              {event.type === 'join' ? '▶' : '⬛'}
-                            </span>
-                            <h3 
-                              className="text-sm md:text-base font-bold text-white leading-snug"
-                              style={{ wordBreak: 'break-word', overflowWrap: 'break-word' }}
-                            >
-                              {event.title}
-                            </h3>
-                          </div>
+                    {/* Description */}
+                    <p className="text-sm text-gray-400 mb-4 leading-relaxed italic flex-grow">
+                      "{event.description}"
+                    </p>
 
-                          {/* Company */}
-                          <p
-                            className="text-xs md:text-sm font-semibold"
-                            style={{ color: colorClass }}
+                    {/* Organization */}
+                    <div 
+                      className="flex items-center justify-between pt-3 border-t mt-auto"
+                      style={{ borderColor: 'var(--border-color)' }}
+                    >
+                      <div className="flex items-center gap-2">
+                        {event.logo && (
+                          <motion.div
+                            className="relative w-8 h-8 rounded-md overflow-hidden bg-gray-800/50 p-1 flex-shrink-0"
+                            whileHover={{ scale: 1.1, rotate: 2 }}
                           >
-                            {event.company}
-                          </p>
-
-                          {/* Logo */}
-                          {event.logo && (
-                            <div className="pt-2 flex items-center gap-2">
-                              <Image
-                                src={event.logo}
-                                alt={event.company}
-                                width={18}
-                                height={18}
-                                className="rounded"
-                              />
-                              <span className="text-xs text-gray-500">
-                                {event.company}
-                              </span>
-                            </div>
-                          )}
-                        </div>
-                      </motion.div>
+                            <Image
+                              src={event.logo}
+                              alt={event.company}
+                              fill
+                              className="object-contain"
+                            />
+                          </motion.div>
+                        )}
+                        <span
+                          className="text-xs md:text-sm font-semibold font-mono truncate"
+                          style={{ color: accentColor }}
+                        >
+                          @{event.company}
+                        </span>
+                      </div>
                     </div>
                   </div>
 
-                  {/* Connector Line - Branch to Main Timeline */}
-                  <motion.div
-                    variants={connectorVariants}
-                    className="absolute h-px"
-                    style={{
-                      top: '2rem',
-                      [isLeft ? 'left' : 'right']: '50%',
-                      [isLeft ? 'marginLeft' : 'marginRight']: '0px',
-                      width: isLeft
-                        ? 'calc(50% - 1.5rem)'
-                        : 'calc(50% - 1.5rem)',
-                      backgroundColor: colorClass,
-                      transformOrigin: isLeft ? 'left' : 'right',
-                    }}
-                    aria-hidden="true"
-                  />
+                  {/* Hover glow effect */}
+                  {isHovered && (
+                    <motion.div
+                      className="absolute inset-0 pointer-events-none"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      style={{
+                        background: `linear-gradient(135deg, ${accentColor}05 0%, transparent 50%)`,
+                      }}
+                    />
+                  )}
                 </motion.div>
-              );
-            })}
-          </motion.div>
-        </div>
+              </motion.div>
+            );
+          })}
+        </motion.div>
 
-        {/* Statistics Section */}
+        {/* Terminal footer */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3, ease: 'easeOut' }}
+          className="mt-16 text-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
           viewport={{ once: false }}
-          className="mt-20 md:mt-24 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4"
         >
-          {[
-            { label: 'Joins', value: '5', color: 'text-[var(--neon-green)]' },
-            { label: 'Departures', value: '3', color: 'text-red-400' },
-            { label: 'Years Active', value: '4', color: 'text-blue-400' },
-            { label: 'Organizations', value: '5', color: 'text-purple-400' },
-          ].map((stat, idx) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{
-                duration: 0.4,
-                delay: 0.35 + idx * 0.08,
-                ease: 'easeOut',
-              }}
-              viewport={{ once: false }}
-              className="border border-[var(--border-color)] bg-[var(--card-bg)] p-4 md:p-6 rounded-lg hover:border-[var(--neon-green)] transition-all duration-300"
+          <div className="inline-flex items-center gap-2 text-xs text-gray-500 font-mono">
+            <motion.span
+              animate={{ opacity: [1, 0, 1] }}
+              transition={{ duration: 1, repeat: Infinity }}
+              className="text-[var(--neon-green)]"
             >
-              <div className={`text-2xl md:text-3xl font-bold font-mono ${stat.color}`}>
-                {stat.value}
-              </div>
-              <div className="text-xs text-gray-400 font-mono mt-2">
-                {stat.label}
-              </div>
-            </motion.div>
-          ))}
+              _
+            </motion.span>
+            <span>End of log. Press q to quit.</span>
+          </div>
         </motion.div>
       </div>
     </section>
