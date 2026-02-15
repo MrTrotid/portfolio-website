@@ -16,7 +16,7 @@ function resolveSiteUrl() {
 export const siteUrl = resolveSiteUrl();
 export const siteHost = new URL(siteUrl).host;
 export const siteName = "Portfolio | Baman Prasad Guragain | Cybersecurity & Developer";
-export const siteDescription = "Cybersecurity enthusiast & full-stack developer. Explore projects in web dev, IoT & security tools.";
+export const siteDescription = "Baman Prasad Guragain - Cybersecurity enthusiast & full-stack developer from Nepal. Explore my portfolio featuring web applications, IoT projects, security tools, and innovative tech solutions.";
 export const siteKeywords = [
   "Baman Prasad Guragain",
   "MrTrotid",
