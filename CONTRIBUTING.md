@@ -404,6 +404,96 @@ We welcome contributions in these areas:
 - **Feature requests:** Use feature request template
 - **Security issues:** Email privately (don't open public issue)
 
+---
+
+## Reporting Issues & Suggesting Upgrades
+
+If you find any issues, bugs, or have suggestions for improvements/upgrades, please follow these steps:
+
+### Step 1: Check Existing Issues
+
+Before creating a new issue, please:
+1. Search the [existing issues](../../issues) to avoid duplicates
+2. Check if the issue has already been reported or fixed
+3. Look at closed issues to see if it was resolved before
+
+### Step 2: Create a New Issue
+
+If your issue is new, create an issue with the following information:
+
+#### For Bug Reports:
+```markdown
+**Description:**
+A clear description of the bug.
+
+**Steps to Reproduce:**
+1. Go to '...'
+2. Click on '...'
+3. See error
+
+**Expected Behavior:**
+What you expected to happen.
+
+**Actual Behavior:**
+What actually happened.
+
+**Screenshots:**
+If applicable, add screenshots.
+
+**Environment:**
+- OS: [e.g., Windows, macOS, Linux]
+- Browser: [e.g., Chrome, Firefox, Safari]
+- Version: [e.g., 22]
+
+**Additional Context:**
+Any other relevant information.
+```
+
+#### For Feature Requests/Upgrades:
+```markdown
+**Is your feature request related to a problem? Please describe.**
+A clear description of what the problem is.
+
+**Describe the solution you'd like:**
+A clear description of what you want to happen.
+
+**Describe alternatives you've considered:**
+Any alternative solutions or features you've considered.
+
+**Additional Context:**
+Any other context, screenshots, or mockups.
+```
+
+### Step 3: Submit a Pull Request (Optional)
+
+If you want to fix the issue yourself:
+1. Fork the repository
+2. Create a feature branch (`git checkout -b fix/issue-name`)
+3. Make your changes
+4. Test thoroughly
+5. Commit with a descriptive message
+6. Push to your fork
+7. Open a Pull Request referencing the issue
+
+### Issue Labels
+
+We use labels to categorize issues:
+- `bug` - Something isn't working
+- `enhancement` - New feature or improvement
+- `documentation` - Documentation improvements
+- `good first issue` - Good for newcomers
+- `help wanted` - Extra attention needed
+- `question` - Further information requested
+
+### Response Time
+
+We aim to respond to issues within:
+- **Critical bugs:** 24-48 hours
+- **Regular bugs:** 3-5 days
+- **Feature requests:** 1-2 weeks
+
+---
+
 ### Resources
 
 - [Next.js Documentation](https://nextjs.org/docs)
