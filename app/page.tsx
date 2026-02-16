@@ -89,6 +89,11 @@ export default function Home() {
       {/* Footer */}
       <footer className="border-t border-[var(--border-color)] py-8 overflow-hidden">
         <div className="w-full px-6 text-center" style={{ maxWidth: '80rem', margin: '0 auto' }}>
+          <div className="flex flex-wrap justify-center gap-4 mb-4">
+            <a href="/resume-subdomain" className="text-[var(--neon-green)] hover:underline font-mono text-sm">Resume</a>
+            <span className="text-gray-600">|</span>
+            <a href="/timeline" className="text-[var(--neon-green)] hover:underline font-mono text-sm">Timeline</a>
+          </div>
           <p className="text-gray-400 font-mono text-sm">
             © 2026 Baman Prasad Guragain  / Built with Next.js, Tailwind CSS, and Framer Motion.
           </p>

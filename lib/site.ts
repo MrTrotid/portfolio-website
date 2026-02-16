@@ -50,4 +50,4 @@ export const author = {
 };
 
 export const metadataBase = new URL(`${siteUrl}/`);
-export const canonicalRoutes = ["/", "/resume-subdomain", "/timeline"];
+export const canonicalRoutes = ["/", "/timeline", "/resume-subdomain"];

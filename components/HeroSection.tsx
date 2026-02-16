@@ -3,6 +3,7 @@
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 
 interface HeroSectionProps {
@@ -14,7 +15,7 @@ export default function HeroSection({ onContactClick }: HeroSectionProps) {
     { label: 'About Me', href: '#about' },
     { label: 'Projects', href: '#project' },
     { label: 'Experience', href: '#experience' },
-    { label: 'Resume', href: '#resume' },
+    { label: 'Resume', href: '/resume-subdomain', isExternal: true },
   ];
 
   const [showGame, setShowGame] = useState(false);
